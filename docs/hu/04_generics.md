@@ -1,5 +1,10 @@
 # Generikus tipusok
 
+## Generikus fuggvenyek
+
+## Generikus osztalyok
+
+## Invariancia, kovariancia, kontravariancia
 
 ---
 

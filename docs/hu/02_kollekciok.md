@@ -4,9 +4,11 @@
 
 ## Filter, Map
 
-## All, Any, and other predicates
+## first, any, none, all
 
 ## FlatMap
+
+## mapOf, listOf
 
 ---
 

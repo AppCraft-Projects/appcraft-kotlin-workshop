@@ -1,5 +1,10 @@
 # Konvenciok
 
+## Operator tultoltes
+
+## Delegacio
+
+## run, also, apply, let
 
 ---
 

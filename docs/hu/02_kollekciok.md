@@ -1,5 +1,12 @@
 # Kollekciok
 
+## Bevezeto
+
+## Filter, Map
+
+## All, Any, and other predicates
+
+## FlatMap
 
 ---
 

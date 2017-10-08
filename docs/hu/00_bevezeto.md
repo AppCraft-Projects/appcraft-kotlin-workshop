@@ -1,6 +1,6 @@
-# Bevezeto
+# Bevezető
 
-Ide jon a bevezeto kivonata, ami a slide-okban volt.
+Ide jön a bevezető kivonata, ami a slide-okban volt.
 
 
 ---

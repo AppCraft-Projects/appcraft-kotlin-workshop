@@ -1,11 +1,11 @@
-# Generikus tipusok
+# Generikus típusok
 
-## Generikus fuggvenyek
+## Generikus függvények
 
-## Generikus osztalyok
+## Generikus osztályok
 
 ## Invariancia, kovariancia, kontravariancia
 
 ---
 
-[Elozo](https://github.com/AppCraft-Projects/appcraft-kotlin-workshop/blob/master/docs/hu/03_konvenciok.md)
+[Előző](https://github.com/AppCraft-Projects/appcraft-kotlin-workshop/blob/master/docs/hu/03_konvenciok.md)

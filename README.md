@@ -1,1 +1,1 @@
-# appcraft-kotlin-workshop
+# AppCraft Kotlin Workshop

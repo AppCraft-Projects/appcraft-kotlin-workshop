@@ -1,19 +1,19 @@
 # Kotlin alapok
 
-## A Java -> Kotlin konverter hasznalata
+## A Java -> Kotlin konverter használata
 
-## Kulcsszo argumentumok
+## Kulcsszó argumentumok
 
-## Alapertelmezett argumentumok
+## Alapértelmezett argumentumok
 
-## Lambdak
+## Lambdák
 
 ## String template-k
 
-## Data class-ok
+## Adat osztályok
 
-## Nullozhato tipusok
+## Nullozható típusok
 
 ---
 
-[Elozo](https://github.com/AppCraft-Projects/appcraft-kotlin-workshop/blob/master/docs/hu/00_bevezeto.md) | [Kovetkezo](https://github.com/AppCraft-Projects/appcraft-kotlin-workshop/blob/master/docs/hu/02_kollekciok.md)
+[Előző](https://github.com/AppCraft-Projects/appcraft-kotlin-workshop/blob/master/docs/hu/00_bevezeto.md) | [Következő](https://github.com/AppCraft-Projects/appcraft-kotlin-workshop/blob/master/docs/hu/02_kollekciok.md)

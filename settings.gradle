@@ -1,3 +1,0 @@
-rootProject.name = 'appcraft-kotlin-workshop'
-include(":student:introduction")
-include(":instructor:introduction")

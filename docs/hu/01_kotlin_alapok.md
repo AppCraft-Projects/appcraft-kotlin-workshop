@@ -50,16 +50,110 @@ fun foo(param1: String = "bar", param2: Int = 0) {
 foo(param1 = "qux")
 ```
 
-A fenti példában átadjuk a `param1` paramétert kulcsszó paraméterként, és a `param2` megadását elhagyjuk. Ilyenkor az alapértelmezett érték (`0`) kerül behelyettesítésre függvényhíváskor.
+A fenti példában átadjuk a `param1` paramétert kulcsszó paraméterként, és a `param2` megadását elhagyjuk.
+Ilyenkor az alapértelmezett érték (`0`) kerül behelyettesítésre függvényhíváskor.
 
 ## Lambdák
 
 A Kotlin támogatja a *Java 8*-ból már ismert *lambdákat*. Ezek gyakorlatilag névtelen függvények (Java 8 előtt SAM (Single Abstract Method) interfészekkel működött).
+Példa:
 
+```kotlin
+lateinit val lambda: (number: Int) -> Boolean // típus deklaráció
+
+val lambda = { num: Int -> num % 2 == 1 } // értékadás
+```
+
+Egy lambdának lehet több paramétere is, ilyenkor a parmétereket vesszővel választjuk el:
+
+```kotlin
+val lambda = { num: Int, otherNum: Int -> num % 2 == 1 }
+```
 
 ## String template-k
 
+A `String` template-k lehetővé teszik számunkra, hogy változók értékeire:
+
+```kotlin
+val number = 5
+val string = "The number is $number"
+```
+
+Használhatunk függvényeket is egy String template-ben:
+
+```kotlin
+fun getNumber() = 5
+val string = "The number is ${getNumber()}"
+```
+
+Amennyiben egyszerű változók értékeire hivatkozunk, a kapcsos zárójelek elhagyhatók (első példa).
+
 ## Adat osztályok
+
+Az adat osztályok használatával lényegesen leegyszerűsíthetjük olyan osztályainkat, melyeket csak adatok hordozására használunk, például:
+
+```java
+public static class Address {
+    private final String street;
+    private final String city;
+
+    public Address(String street, String city) {
+        this.street = street;
+        this.city = city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public String getCity() {
+        return city;
+    }
+}
+```
+
+A fenti osztály adat osztályként megírva lényegesen leegyszerűsödik:
+
+```kotlin
+data class Address(val street: String, city: String)
+```
+
+Az adat osztályok az alábbiakat nyújtják:
+
+- `equals`/`hashCode` függvény pár,
+- `toString`,
+- `copy` függvény másoláshoz
+- getterek és setterek
 
 ## Nullozható típusok
 
+Kotlinban a típusainkat kétféleképpen hivatkozhatjuk az alapján, hogy az adott változó/paraméter/egyéb lehet-e `null`, vagy sem:
+
+```kotlin
+val string: String? // lehet null
+
+val string: String // nem lehet null
+```
+
+Érdemes arra törekedni, hogy a lehető legkevesebb helyen jelenhessen meg a `null`. Ahol mégis szükség van rá (például, ha Java kóddal szeretnénk
+együttműködni), akkor az alábbi módon tudjuk azt biztonságosan megtenni:
+
+```kotlin
+data class Person(val addresses: List<Address>?, val name: String?)
+
+data class Address(val city: String?)
+
+fun getCity(person: Person): String? {
+    return person?.addresses?.firstOrNull()?.city
+}
+```
+
+Illetve használható a `!!` operátor is:
+
+```kotlin
+fun getName(person: Person): String {
+    return person.name!!
+}
+```
+
+Ez akkor javasolt, ha `null`ozható referenciával rendelkezünk, de tudjuk, hogy az értéke az adott kontextusban nem lehet `null`.

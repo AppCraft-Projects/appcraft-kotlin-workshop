@@ -308,6 +308,8 @@ Az első az egyszerűbb, ott mindössze annyival kell tisztában lenni, hogy a l
 
 A második azonban trükkösebb lehet, itt mindenek előtt a `Product`-ok kollekcióját ki kell nyerni az `orders`-ből, ehhez pedig az előzőleg ismertetett `.flatMap()`-et érdemes használni. 
 
+Gondoljatok csak vissza, mindez Java-ban sokkal masszívabb kód darabot eredményezett volna.
+
 ## Kollekciók rendezése (18. koan)
 
 Gyakran használt művelet a különböző kollekciók rendezése is, szerencsére a Kotlin erre frankón kireszelt megoldásokat kínál.
@@ -319,5 +321,220 @@ listOf("bbb", "a", "cc").sortedBy { it.length } == listOf("a", "cc", "bbb")
 
 Az első esetben a stringek tartalma szerint rendez, a második esetében viszont az elemek hossza alapján.
 
+Ezek alapján lássunk is neki a soron következő koannak:
+```kotlin
+// Return a list of customers, sorted by the ascending number of orders they made
+fun Shop.getCustomersSortedByNumberOfOrders(): List<Customer> = TODO()
+```
 
+Az egyes `Customer` objektumok `orders` kollekciójának mérete (`size` tulajdonsága) alapján kell végülis rendezni a `.sortBy()`-al. 
 
+```kotlin
+fun Shop.getCustomersSortedByNumberOfOrders(): List<Customer> = customers.sortedBy { it.orders.size }
+```
+
+Egy sor lesz ismét az egész. 
+
+## Kollekciók összegzése (19. koan)
+
+Kövektező nagyon gyakori művelet, hogy egy kollekció elemeinek bizonyos értékeit, valamilyen szabályosság szerint összegezni kell.
+
+```kotlin
+listOf(1, 5, 3).sum() == 9
+listOf("a", "b", "cc").sumBy { it.length() } == 4
+```
+
+A következők történtek a kollekcióban található értékekkel:
+1. Három számot adta össze.
+2. Három `String` hosszát adta össze.
+
+Ezek alapján lássunk is neki a soron következő koannak:
+```kotlin
+// Return the sum of prices of all products that a customer has ordered.
+// Note: the customer may order the same product for several times.
+fun Customer.getTotalOrderPrice(): Double = TODO()
+```
+
+Szokásos a történet, az `orders` kollekció `products` elemeinek a `price` értékeit kell összegezni a `.sumByDouble()` funkcióval.
+
+```kotlin
+fun Customer.getTotalOrderPrice(): Double = orders.flatMap { it.products }.sumByDouble { it.price }
+```
+
+## Kollekciók összegzése másképp (22. koan)
+
+Van az összegzésnek egy általánosabb formája is, ami sok más esetben is tök jól használni, más nyelvekben reducernek is szokták nevezni.
+
+Lássuk is a szokásos egyszerű példánkat:
+```kotlin
+listOf(1, 2, 3, 4).fold(1, {
+    partProduct, element ->
+    element * partProduct
+}) == 24
+```
+
+Majd pedig essünk neki a soron következő koannak:
+```kotlin
+// Return the set of products that were ordered by every customer
+fun Shop.getSetOfProductsOrderedByEveryCustomer(): Set<Product> {
+    TODO()
+}
+```
+
+A megoldás az eddigi legkomplexebb. [TODO] Ezt okosan meg kell fogalmazni.
+```kotlin
+fun Shop.getSetOfProductsOrderedByEveryCustomer(): Set<Product> {
+    val allProducts = customers.flatMap { it.orders.flatMap { it.products }}.toSet()
+    return customers.fold(allProducts, {
+        orderedByAll, customer ->
+        orderedByAll.intersect(customer.orders.flatMap { it.products }.toSet())
+    })
+}
+```
+
+## Kollekciók csoportosítása (20. koan)
+
+Szintén megszokott probléma, hogy a kollekciók elemeit csoportosítani kell valamilyen szempont szerint. Például a vásárlókat, város vagy kor szerint. 
+
+A Kotlin erre is kínál egy nagyon kellemes megoldást a `.groupBy()` használatával. Aki használt már SQL-t, feltételezem a többség igen, annak bizonyosan nagyon ismerős lesz.
+
+Lássuk is a szokásos példánkat:
+```kotlin
+val result = listOf("a", "b", "ba", "ccc", "ad").groupBy { it.length() }
+
+result == mapOf(1 to listOf("a", "b"), 2 to listOf("ba", "ad"), 3 to listOf("ccc"))
+```
+
+Az történik itt, hogy csoportosítsuk a kollekció elemeit a `String`-ek hossza alapján. Az eredmény ennek megfelelően pedig egy `Map` lesz, aminek a kulcsa a *hossz* lesz, az érték pedig a *megfelelő elemek listája*.
+
+Ezek alapján lássunk is neki a soron következő koannak:
+```kotlin
+// Return a map of the customers living in each city
+fun Shop.groupCustomersByCity(): Map<City, List<Customer>> = TODO()
+```
+
+A megoldás adja magát, minden `Customer` objektumnak van egy `city` tulajdonsága, aszerint kell csoportosítani a most megtanult új funkcióval.
+
+```kotlin
+fun Shop.groupCustomersByCity(): Map<City, List<Customer>> = customers.groupBy { it.city }
+```
+
+## Kollekciók partícionálása (21. koan)
+
+Gyakran van arra szükség, hogy egy kollekció elemeit szétválasszuk valamilyen tulajdonságuk szerint. Például külön vegyük a pozitív és a negatív számokat. Vagy rendeléseknél külön vegyük a leszállított és a nem szállított elemeket.
+
+Lássuk is erre a szokásos egyszerű példánkat:
+```kotlin
+val numbers = listOf(1, 3, -4, 2, -11)
+val (positive, negative) = numbers.partition { it > 0 }
+positive == listOf(1, 3, 2)
+negative == listOf(-4, -11)
+```
+
+Lássuk sorban, ami itt történt:
+1. Létrehoztunk egy listát számokból, vegyesen pozitív és negatív.
+2. Partícionáltuk ezeket, egyik része a 0-nál nagyobbak, a másik a kisebbek. 
+
+>Külön érdekesség, hogy a második lépésben a dekonstrukciós operátort használtuk. Erről nem volt még szó korábban. 
+>[TODO] Ezt fejtsd ki
+
+Ezek alapján essünk neki a soron következő koannak:
+```kotlin
+// Return customers who have more undelivered orders than delivered
+fun Shop.getCustomersWithMoreUndeliveredOrdersThanDelivered(): Set<Customer> = TODO()
+```
+
+A megoldása csak egy picit, pár sorral komplexebb a korábbiaknál, alapvetően az `Order` objektum `isDelivered` tulajdonságára épít.
+
+```kotlin
+fun Shop.getCustomersWithMoreUndeliveredOrdersThanDelivered(): Set<Customer> = customers.filter {
+    val (delivered, undelivered) = it.orders.partition { it.isDelivered }
+    undelivered.size > delivered.size
+}.toSet()
+```
+
+## Kombináljuk a korábban tanultakat (23. koan)
+
+Most már nem fogok semmi újat mutatni, helyette kombináljuk az eddig látottakat. 
+
+Így néz ki a mostani koanunk:
+```kotlin
+// Return the most expensive product among all delivered products
+// (use the Order.isDelivered flag)
+fun Customer.getMostExpensiveDeliveredProduct(): Product? {
+    TODO()
+}
+
+// Return how many times the given product was ordered.
+// Note: a customer may order the same product for several times.
+fun Shop.getNumberOfTimesProductWasOrdered(product: Product): Int {
+    TODO()
+}
+```
+
+A megoldás pedig. [TODO] Ezt fejtsd ki.
+
+```kotlin
+fun Customer.getMostExpensiveDeliveredProduct(): Product? {
+    return orders.filter { it.isDelivered }.flatMap { it.products }.maxBy { it.price }
+}
+
+fun Shop.getNumberOfTimesProductWasOrdered(product: Product): Int {
+    return customers.flatMap { it.getOrderedProductsList() }.count { it == product }
+}
+
+fun Customer.getOrderedProductsList(): List<Product> {
+    return orders.flatMap { it.products }
+}
+```
+
+## Végül pedig a nagy feladat következik (24. koan)
+
+Itt ténylegesen kombináljunk mindent, amit eddig tanultunk. Veszünk egy jó csúnya Java kódot, és azt megszépítjük a Kotlinnal.
+
+Ez a Java kód:
+```java
+public Collection<String> doSomethingStrangeWithCollection(
+        Collection<String> collection
+) {
+    Map<Integer, List<String>> groupsByLength = Maps.newHashMap();
+    for (String s : collection) {
+        List<String> strings = groupsByLength.get(s.length());
+        if (strings == null) {
+            strings = Lists.newArrayList();
+            groupsByLength.put(s.length(), strings);
+        }
+        strings.add(s);
+    }
+
+    int maximumSizeOfGroup = 0;
+    for (List<String> group : groupsByLength.values()) {
+        if (group.size() > maximumSizeOfGroup) {
+            maximumSizeOfGroup = group.size();
+        }
+    }
+
+    for (List<String> group : groupsByLength.values()) {
+        if (group.size() == maximumSizeOfGroup) {
+            return group;
+        }
+    }
+    return null;
+}
+```
+
+[TODO] Értelmezzük mi is csinál ez a kód.
+ 
+Itt pedig a Kotlinos változat:
+```kotlin
+fun doSomethingStrangeWithCollection(collection: Collection<String>): Collection<String>? {
+
+    val groupsByLength = collection. groupBy { s -> s.length }
+
+    val maximumSizeOfGroup = groupsByLength.values.map { group -> group.size }.max()
+
+    return groupsByLength.values.firstOrNull { group -> group.size == maximumSizeOfGroup }
+}
+```
+
+Első ránézésre rövidebb, de egyúttal egyszerűbben olvasható is lett a kód.

@@ -19,8 +19,7 @@ Megvan az összes megszokott kollekció:
 - HashSet
 - Stb.
 
-
-## Deklaráció és type inference
+## Deklaráció és type inference
 
 Lássunk is hozzá:
 ```kotlin
@@ -63,7 +62,7 @@ Ez a Cmd / Ctrl + klikk jó cucc, az összes osztálynak a forrása megtekinthet
 Figyeljétek a sor végét, itt egy újabb fontos megállapítás. A Kotlin nem definiál saját kollekciókat, a Java alap osztályait egészíti ki új képességekkel. Legyenek azek a fent látott interfacek (mutable / immutable), vagy kiegészítő funckiók.
 
 
-## Lista létrehozása
+## Lista létrehozása
 
 Egy listát jellemzően nem a fenti módon szoktunk létrehozni, inkább a `listOf()` funckióval.
 ```kotlin
@@ -93,7 +92,7 @@ mutableCities.add("Budapest")
 ```
 
 
-## Listák kiiratása
+## Listák kiiratása
 
 Egyszerű, a println kifejezetten okos.
 ```kotlin
@@ -124,7 +123,7 @@ val characters = charArrayOf('A', 'B', 'C')
 ```
 
 
-## Koan #13 - Konvertálás kollekció típusok között
+## Koan #13 - Konvertálás kollekció típusok között
 
 Számos olyan funkció van, ami az egyik fajta kollekcióból a másikba alakít át. Közös jellemzőjük, hogy mindegyik a `to` szócskával kezdődik.
 
@@ -157,7 +156,7 @@ fun Shop.getSetOfCustomers(): Set<Customer> = customers.toSet()
 A funkció visszatérési értéke alapján következtettem ki, hogy a másik oldalon mit adjunk vissza.
 
 
-## Koan #14 - Filter map
+## Koan #14 - Filter map
 
 A high order funkcióknak köszönhetően a nyelv funkcionális nyelvi eszközökkel gazdagodott. Ez pedig sokat segít kollekciók bejárásában, illetve szűrésében.
 

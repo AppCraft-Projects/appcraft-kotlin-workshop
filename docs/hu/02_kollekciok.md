@@ -11,12 +11,12 @@ Több stílust is tartalmaz:
 - Kiegészítő (extension) funkciókkal bővíti a meglévő Java osztályok képességeit. 
 
 Megvan az összes megszokott kollekció:
-- Lists
-- Arrays (beleértve az ekvivalens "primitív típusokat is")
-- Maps
-- Sets
-- HashMap
-- HashSet
+- `List`
+- `Array` (beleértve az ekvivalens "primitív típusokat is")
+- `Map`
+- `Set`
+- `HashMap`
+- `HashSet`
 - Stb.
 
 ## Deklaráció és type inference

@@ -2,7 +2,7 @@
 
 ## Bevezető
 
-Kotlin egy példás *Standard Libraryval* érkezik, számos gyakran alkalmazott funkciót és annotációt foglal magába.
+Kotlin egy körültekintően megépített *Standard Libraryval* érkezik, számos gyakran alkalmazott funkciót és annotációt foglal magába.
 
 Kifejzetten pici a mérete, mindössze **750KB**, így nem növeli meg túlzottan az alkalamzás méretét. Ráadásul az Android fejlesztőkre is gondoltak, a metódusok számát is igyekeztek alacsonyan tartani.
 
@@ -10,13 +10,13 @@ Több stílust is tartalmaz:
 - High-order funkciók, amelyek a funkcionális programozást segítik elő.
 - Kiegészítő (extension) funkciókkal bővíti a meglévő Java osztályok képességeit. 
 
-Megvan az összes megszokott kollekció:
-- `List`
-- `Array` (beleértve az ekvivalens "primitív típusokat is")
-- `Map`
-- `Set`
-- `HashMap`
-- `HashSet`
+Megtalálható az összes jól megszokott kollekció:
+- Lists
+- Arrays (beleértve az ekvivalens "primitív típusokat is")
+- Maps
+- Sets
+- HashMap
+- HashSet
 - Stb.
 
 ## Deklaráció és type inference
@@ -59,7 +59,7 @@ Ez a Cmd / Ctrl + klikk jó cucc, az összes osztálynak a forrása megtekinthet
 
 Figyeljétek a sor végét, itt egy újabb fontos megállapítás. A Kotlin nem definiál saját kollekciókat, a Java alap osztályait egészíti ki új képességekkel. Legyenek azek a fent látott interfacek (mutable / immutable), vagy kiegészítő funckiók.
 
-## Listák létrehozása
+## Kollekciók létrehozása (listOf, mapOf)
 
 Egy listát jellemzően nem a fenti módon szoktunk létrehozni, inkább a `listOf()` funckióval.
 ```kotlin
@@ -87,7 +87,15 @@ val mutableCities = mutableListOf("London", "Párizs", "Róma")
 mutableCities.add("Budapest")
 ```
 
-## Listák kiíratása
+De a többi kollekció esetében is megvannak a hasonló kreátor funkciók:
+```kotlin
+val hashMaps = hashMapOf(Pair("Anglia", London"), Pair("Francia", Párizs"), Pair("Olasz", "Róma"))
+ 
+val booleans = booleanArrayOf(true, false, true)
+val characters = charArrayOf('A', 'B', 'C')
+```
+
+## Kollekciók kiíratása
 
 Egyszerű, a `println()` kifejezetten okos, rögtön mutatok is néhány példát erre:
 ```kotlin
@@ -104,16 +112,6 @@ println(empty)
 println(numbers.javaClass)
 println(cities.javaClass)
 println(empty.javaClass)
-```
-
-## Más jellegű kollekciók
-
-Mutatok néhány példát:
-```kotlin
-val hashMaps = hashMapOf(Pair("Anglia", London"), Pair("Francia", Párizs"), Pair("Olasz", "Róma"))
- 
-val booleans = booleanArrayOf(true, false, true)
-val characters = charArrayOf('A', 'B', 'C')
 ```
 
 ## Konvertálás kollekció típusok között (13. koan)
@@ -148,18 +146,17 @@ fun Shop.getSetOfCustomers(): Set<Customer> = customers.toSet()
 
 A funkció visszatérési értéke alapján következtettem ki, hogy a másik oldalon mit adjunk vissza.
 
-## Filter map (14. koan)
+## Kollekciók bejárása és szűrése (14. koan)
 
-A high order funkcióknak köszönhetően a nyelv funkcionális nyelvi eszközökkel gazdagodott. Ez pedig sokat segít kollekciók bejárásában, illetve szűrésében.
+A high order funkcióknak köszönhetően a nyelv kiterjedt funkcionális nyelvi eszköztárral gazdagodott. Ezek segítenek kollekciók bejárásában, illetve szűrésében, de emellett még számos további hasznos funkciót adnak hozzá.
 
 >**High order funkció**: olyan funkciót jelent, amire következő kettő közül legalább az egyik teljesül:
 >- Egy vagy több paramétere funkció.
 >- Visszatérési értékként funkciót ad vissza.
 
-
 Ezek közül a kettő leggyakrabban használttal fogunk megismerkedni:
-- Filter: bejárja a kollekció összes elemét, és azokat adja vissza, amelyek megfelelnek a funkcióban adott feltételnek. Az alábbi példában a 0-nál nagyobbakat.
-- Map: bejárja a kollekció összes elemét, és visszaad egy olyan kollekciót, amelyenek minden elemén alkalmazta a funkcióban megadott műveletet.
+- `.filter()`: bejárja a kollekció összes elemét, és azokat adja vissza, amelyek megfelelnek a funkcióban adott feltételnek. Az alábbi példában a 0-nál nagyobbakat.
+- `.map()`: bejárja a kollekció összes elemét, és visszaad egy olyan kollekciót, amelyenek minden elemén alkalmazta a funkcióban megadott műveletet.
 
 ```kotlin
 val numbers = listOf(1, -1, 2)
@@ -194,8 +191,133 @@ fun Shop.getCitiesCustomersAreFrom(): Set<City> = customers.map { it.city }.toSe
 fun Shop.getCustomersFrom(city: City): List<Customer> = customers.filter { it.city == city }
 ```
 
-## All, Any és a többi prédikátum (15. koan)
+## Néhány hasznos funkció (15. koan)
 
-## FlatMap
+Még néhány gyakraasznált funkciót érdemes megismerni:
+- `.any()`: *True* értéket ad vissza, ha a kollekciónak legalább egy eleme egyezik a prédikátummal.
+- `.all()`: *True* értéket ad vissza, ha a kollekció minden eleme megegyezik a prédikátummal.
+- `.count()`: A kollekció elemeinek a számát.
+- `.find()`: Az első a prédikátummal egyező elemet adja vissza, vagy null-t, ha nem talál semmit.
 
-## mapOf, listOf
+```kotlin
+val numbers = listOf(-1, 0, 2)
+val isZero: (Int) -> Boolean = { it == 0 }
+numbers.any(isZero) == true
+numbers.all(isZero) == false
+numbers.count(isZero) == 1
+numbers.find { it > 0 } == 2
+```
+
+Innen pedig már nem lesz nehéz a koan, innen indulunk, ugye.
+```kotlin
+// Return true if all customers are from the given city
+fun Shop.checkAllCustomersAreFrom(city: City): Boolean = TODO()
+
+// Return true if there is at least one customer from the given city
+fun Shop.hasCustomerFrom(city: City): Boolean = TODO()
+
+// Return the number of customers from the given city
+fun Shop.countCustomersFrom(city: City): Int = TODO()
+
+// Return a customer who lives in the given city, or null if there is none
+fun Shop.findAnyCustomerFrom(city: City): Customer? = TODO()
+```
+
+Érdemes alaposan elolvasni a kommentekben leírt feladatokat, onnantól simán adni fogja magát, hogy melyiknél és mit válassz.
+```kotlin
+fun Shop.checkAllCustomersAreFrom(city: City): Boolean = customers.all { it.city == city }
+
+fun Shop.hasCustomerFrom(city: City): Boolean = customers.any { it.city == city }
+
+fun Shop.countCustomersFrom(city: City): Int = customers.count { it.city == city }
+
+fun Shop.findAnyCustomerFrom(city: City): Customer? = customers.find { it.city == city }
+```
+
+## Kollekció hierarchiák kilapítása (16. koan)
+
+Többszörösen egymásba ágyazott kollekciók bejárása és minden nemű manipulálása tud problémás lenni. Ebben segít a `.flatMap()` funkció, amely segít ezeket egy listává lapítani. Mutatok két példát, és rögtön érteni fogjátok.
+```kotlin
+val result = listOf("abc", "12").flatMap { it.toCharList() }
+result == listOf('a', 'b', 'c', '1', '2')
+```
+
+Nézzünk rá a feladatra:
+```kotlin
+// Return all products this customer has ordered
+val Customer.orderedProducts: Set<Product> get() {
+    TODO()
+}
+
+// Return all products that were ordered by at least one customer
+val Shop.allOrderedProducts: Set<Product> get() {
+    TODO()
+}
+```
+
+Majd a megoldásra is. Ehhez érdemes tudni két fontos infót, ha ránéztek a Shop.kt filera, akkor látni fogjátok:
+- Az `Order` objektumnak van egy `products` eleme.
+- A `Customer` objektumnak pedig a `orderedProducts`.
+
+Ezekkel már szépen fogsz tudni dolgozni.
+
+```kotlin
+val Customer.orderedProducts: Set<Product> get() {
+    return orders.flatMap { it.products }.toSet()
+}
+
+val Shop.allOrderedProducts: Set<Product> get() {
+    return customers.flatMap { it.orderedProducts }.toSet()
+}
+```
+
+## Kollekciók legkisebb és legnagyobb eleme (17. koan)
+
+Szintén mindennapi feladat, hogy kiválasszuk egy kollekció legnagyobb vagy épp legkisebb elemét. Ebben segít a következő négy funkció:
+- `.min()`: Vissza adja a legkisebb elemet, vagy `null`-t, ha a kollekció üres.
+- `.minBy()`: Adott selectornak megfelelően vissza adja a legkisebb elemet, vagy `null`-t, ha a kollekció üres.
+- `.max()`: Vissza adja a legnagyobb elemet, vagy `null`-t, ha a kollekció üres.
+- `.maxBy()`: Adott selectornak megfelelően vissza adja a legnagyobb elemet, vagy `null`-t, ha a kollekció üres.
+
+A gyakorlatban egyszerűen használhatóak, mutatok is rá két példát.
+```kotlin
+listOf(1, 42, 4).max() == 42
+listOf("a", "ab").minBy { it.length } == "a"
+```
+
+Az első sor teljesen egyértelmű, kiválasztja a legnagyobbat a számok között, nem is magyarázom ezt túl. A második esetében az történik viszont, hogy a stringek közül a legrövidebbet választjuk, ami pedig az *"a"*.
+
+Szerintem a .minBy() és a .maxBy() funkciók tényleges megértéséhez nem árt még egy példa. 
+```kotlin
+listOf(3, 4, 5).maxBy { -it } == -3
+listOf(3, 4, 5).minBy { -it } == -5
+```
+
+Végig megy a kollekción, a szelektornak megfelelően negálja az összes elem értékét, és az első sor esetében a legnagyobbat választja ki, ami *-3*. A második sor esetében pedig a legkisebbet, ami viszont *-5*.
+
+Jöhet is az aktuális koanunk:
+```kotlin
+// Return a customer whose order count is the highest among all customers
+fun Shop.getCustomerWithMaximumNumberOfOrders(): Customer? = TODO()
+
+// Return the most expensive product which has been ordered
+fun Customer.getMostExpensiveOrderedProduct(): Product? = TODO()
+```
+
+Az első az egyszerűbb, ott mindössze annyival kell tisztában lenni, hogy a listák `.size` tulajdonsága adja vissza a méretét.
+
+A második azonban trükkösebb lehet, itt mindenek előtt a `Product`-ok kollekcióját ki kell nyerni az `orders`-ből, ehhez pedig az előzőleg ismertetett `.flatMap()`-et érdemes használni. 
+
+## Kollekciók rendezése (18. koan)
+
+Gyakran használt művelet a különböző kollekciók rendezése is, szerencsére a Kotlin erre frankón kireszelt megoldásokat kínál.
+
+```kotlin
+listOf("bbb", "a", "cc").sorted() == listOf("a", "bbb", "cc")
+listOf("bbb", "a", "cc").sortedBy { it.length } == listOf("a", "cc", "bbb")
+```
+
+Az első esetben a stringek tartalma szerint rendez, a második esetében viszont az elemek hossza alapján.
+
+
+

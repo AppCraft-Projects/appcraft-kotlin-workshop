@@ -156,6 +156,7 @@ A high order funkcióknak köszönhetően a nyelv funkcionális nyelvi eszközö
 >- Egy vagy több paramétere funkció.
 >- Visszatérési értékként funkciót ad vissza.
 
+
 Ezek közül a kettő leggyakrabban használttal fogunk megismerkedni:
 - Filter: bejárja a kollekció összes elemét, és azokat adja vissza, amelyek megfelelnek a funkcióban adott feltételnek. Az alábbi példában a 0-nál nagyobbakat.
 - Map: bejárja a kollekció összes elemét, és visszaad egy olyan kollekciót, amelyenek minden elemén alkalmazta a funkcióban megadott műveletet.

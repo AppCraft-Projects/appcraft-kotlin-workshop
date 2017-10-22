@@ -114,6 +114,13 @@ println(cities.javaClass)
 println(empty.javaClass)
 ```
 
+## Mielőtt belevágnánk a többi feladatba
+
+[TODO] Mutasd be az osztályokat, amiken dolgozni fogunk
+
+```kotlin
+```
+
 ## Konvertálás kollekció típusok között (13. koan)
 
 Számos olyan funkció van, ami az egyik fajta kollekcióból a másikba alakít át. Közös jellemzőjük, hogy mindegyik a `to` szócskával kezdődik.
@@ -155,8 +162,10 @@ A high order funkcióknak köszönhetően a nyelv kiterjedt funkcionális nyelvi
 >- Visszatérési értékként funkciót ad vissza.
 
 Ezek közül a kettő leggyakrabban használttal fogunk megismerkedni:
-- `.filter()`: bejárja a kollekció összes elemét, és azokat adja vissza, amelyek megfelelnek a funkcióban adott feltételnek. Az alábbi példában a 0-nál nagyobbakat.
+- `.forEach()`: [TODO] magyarázd el
 - `.map()`: bejárja a kollekció összes elemét, és visszaad egy olyan kollekciót, amelyenek minden elemén alkalmazta a funkcióban megadott műveletet.
+- `.filter()`: bejárja a kollekció összes elemét, és azokat adja vissza, amelyek megfelelnek a funkcióban adott feltételnek. Az alábbi példában a 0-nál nagyobbakat.
+
 
 ```kotlin
 val numbers = listOf(1, -1, 2)
@@ -167,6 +176,9 @@ numbers.filter { it > 0 } // == listOf(1, 2)
 // Szorozzuk önmagával
 numbers.map { it * it } // == listOf(1, 1, 4)
 ```
+
+[TODO] Mutass példát a chainelésre
+[TODO] Mutass példát arra is, hogy paireket ad vissza
 
 Nézzünk is rá a feladatra.
 ```kotlin
@@ -190,6 +202,8 @@ fun Shop.getCitiesCustomersAreFrom(): Set<City> = customers.map { it.city }.toSe
 
 fun Shop.getCustomersFrom(city: City): List<Customer> = customers.filter { it.city == city }
 ```
+
+
 
 ## Néhány hasznos funkció (15. koan)
 

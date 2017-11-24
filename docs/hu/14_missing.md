@@ -1,0 +1,1 @@
+Mi maradt ki?

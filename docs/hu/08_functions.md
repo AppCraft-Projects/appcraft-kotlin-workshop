@@ -1,0 +1,3 @@
+- First class functions, mezei fileba is belevághatsz... önmagában lehet egy fileban... importálható
+- Lambda, hogy néz ki a szintaxis
+- Funkció kompozíció, hogyan tudsz lamdát beadni egy funkciónak, és hogyan tudsz visszaadni

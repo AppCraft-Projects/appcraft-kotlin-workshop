@@ -1,0 +1,5 @@
+- map: átalakít listát másikká 
+- filter: kiválogat elemeket (none: azt mondja meg, hogy egyikre se igaz, any: egyikre igaz)
+- flatMap: több lista összeolvasztása
+- reduce: aggregál, seed értékkel (pl SUM, COUNT, ezek tipikus példák)
+- fold: mint a reduce, ez akkor fontos, ha 0 elemű listát akarsz reducolni

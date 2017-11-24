@@ -1,0 +1,4 @@
+- Toast
+- Alert
+- Letöltés hálózatról
+- Layout

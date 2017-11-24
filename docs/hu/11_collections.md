@@ -1,0 +1,9 @@
+- A Java kollekciókra épít
+- Létrehozása (listOf, mapOf)
+- Kiíratás (println)
+- Konvertálás (toSet, toCollection)
+- Néhány hasznos funkció (any, all, count, find)
+- Legkisebb és legnagyobb eleme (min, max)
+- Rendezés (sorted, sortedBy)
+- Összegzés (sum, sumBy)
+- Csoportosítás (groupBy)

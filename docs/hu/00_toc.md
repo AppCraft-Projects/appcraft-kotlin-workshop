@@ -1,4 +1,8 @@
-# Tartalom
+# Bevezető
+
+Ide jon egy kis bevezeto szoveg
+
+## Tartalom
 
 - [A Java - Kotlin Konverter](https://github.com/AppCraft-Projects/appcraft-kotlin-workshop/blob/master/docs/hu/01_convert_from_java.md)
 - [Együttműködés a Java-val](https://github.com/AppCraft-Projects/appcraft-kotlin-workshop/blob/master/docs/hu/02_java_interop.md)

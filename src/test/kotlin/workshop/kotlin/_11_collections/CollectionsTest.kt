@@ -22,4 +22,16 @@ class CollectionsTest {
 
         assertThat(setFromSortedValues).containsExactly(1, 3, 5, 6)
     }
+
+    @Test
+    fun oddNumbersInASetShouldBeTwo() {
+
+        assertThat(countOfOddNumbersInASet).isEqualTo(2)
+    }
+
+    @Test
+    fun shouldHaveEvenNumberInASet() {
+
+        assertThat(hasEvenNumbersInASet).isTrue()
+    }
 }

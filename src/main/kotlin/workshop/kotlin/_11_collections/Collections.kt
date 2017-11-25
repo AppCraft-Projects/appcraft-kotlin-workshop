@@ -34,11 +34,15 @@ val sortedValues = listOf(5, 1, 3, 3, 6).sorted()
 
 // TODO: fix the code below to pass the tests defined in CollectionsTest.kt
 
-val sumOfSortedValues: Int = 0
+val sumOfSortedValues: Int = -1
 
 val preAndPostFixedStringJoinOfInferredList: String = ""
 
 val setFromSortedValues: Set<Int> = setOf()
+
+val countOfOddNumbersInASet: Int = -1
+
+val hasEvenNumbersInASet: Boolean = false
 
 
 

@@ -1,4 +1,4 @@
-- Adám "Kotlin is the new Java" cikke alapján
+f- Adám "Kotlin is the new Java" cikke alapján
 
 - Fogunk ott egy példát, és fokozatosan egyszerűsítgetjük
 - Az elején lesz egy nagy class, és fokozatosan kiszedjük belőle ezeket a dolgokat, még a végén frankó pici lesz

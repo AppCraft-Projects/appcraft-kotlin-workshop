@@ -1,0 +1,16 @@
+# Tartalom
+
+- [A Java - Kotlin Konverter](https://github.com/AppCraft-Projects/appcraft-kotlin-workshop/blob/master/docs/hu/01_convert_from_java.md)
+- [Együttműködés a Java-val](https://github.com/AppCraft-Projects/appcraft-kotlin-workshop/blob/master/docs/hu/02_java_interop.md)
+- [Adat osztályok](https://github.com/AppCraft-Projects/appcraft-kotlin-workshop/blob/master/docs/hu/03_data_classes.md)
+- [Immutabilitás és Másolás](https://github.com/AppCraft-Projects/appcraft-kotlin-workshop/blob/master/docs/hu/04_immutability_and_copy.md)
+- [Típus Kikövetkeztetés és `Nothing`](https://github.com/AppCraft-Projects/appcraft-kotlin-workshop/blob/master/docs/hu/05_type_inference_any_nothing.md)
+- [`if` és `when`](https://github.com/AppCraft-Projects/appcraft-kotlin-workshop/blob/master/docs/hu/06_if_when_range.md)
+- [Null kezelés](https://github.com/AppCraft-Projects/appcraft-kotlin-workshop/blob/master/docs/hu/07_nullability.md)
+- [Funkciók](https://github.com/AppCraft-Projects/appcraft-kotlin-workshop/blob/master/docs/hu/08_functions.md)
+- [Kiegészítő Functions](https://github.com/AppCraft-Projects/appcraft-kotlin-workshop/blob/master/docs/hu/09_extension_functions.md)
+- [Destruktúrálás](https://github.com/AppCraft-Projects/appcraft-kotlin-workshop/blob/master/docs/hu/10_destructuring.md)
+- [Kollekciók](https://github.com/AppCraft-Projects/appcraft-kotlin-workshop/blob/master/docs/hu/11_collections.md)
+- [Funkcionális Programozás](https://github.com/AppCraft-Projects/appcraft-kotlin-workshop/blob/master/docs/hu/12_functional_programming.md)
+- [Anko](https://github.com/AppCraft-Projects/appcraft-kotlin-workshop/blob/master/docs/hu/13_anko.md)
+- [Mi maradt ki?](https://github.com/AppCraft-Projects/appcraft-kotlin-workshop/blob/master/docs/hu/14_missing.md)

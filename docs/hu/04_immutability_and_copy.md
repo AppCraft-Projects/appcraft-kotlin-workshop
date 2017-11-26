@@ -64,9 +64,11 @@ Ez pedig lemehet tetszőleg mélységig:
 
 Eddig egészen úgy működik, ahogy azt várnánk, itt tényleg immutable.
 
-## Probléma #1: Osztály hierarchia
+## Probléma #1: *var*-al deklarált data class mező
 
-Mutatok egy példát, ahol kicsit a fejük tetejére fognak állni a dolgok:
+Mutatok is erre két példát, ahol kicsit a fejük tetejére fognak állni a dolgok.
+
+Előbb egy objektum-hierachiával:
 
 ```kotlin
   data class Address(var street: String, val city: String, val country: String)
@@ -85,9 +87,7 @@ Az előző példával ellentétben most simán meg tudtam változtatni ezt az é
 
 Tehát a *val*-tól nem lett a teljes adatstruktúra immutable!
 
-## Probléma #2: Kollekció
-
-Mutatok még egy példát:
+Illetve hasonló, de kollekció szempontból:
 
 ```kotlin
   data class Address(var street: String, val city: String, val country: String)
@@ -104,9 +104,11 @@ Mutatok még egy példát:
 
 Nagyon hasonló mint az előző. Nem tudok a kollekcióhoz új elemet hozzáadni, vagy egy meglévőt kivenni, ez nem lehetséges. Azonban a *street* mezőt bármelyik objektum esetében meg tudom változatni. 
 
-## Probléma #3: Copy
+## Probléma #2: Copy
 
-Még kettőt mutatok, ahol lemásoljuk a struktúrát. Az első osztály hierarchiával:
+Nagyon király dolog, hogy a data classok számos más metódus mellett a *copy()*-t is elkészítik nekünk. Ennek használatával simán lemásolható az objektumok tartalma. Azonban ez nem minden esetben működik úgy, ahogy arra előzetesen számítanál. Máris mutatok két példát, amivel sokkal jobban át fogjátok látni.
+
+Az első példával lássunk egy objektum-hierarchiát, nemrég láttunk ezzel egy problémát, de most mutatok egy újat:
 
 ```kotlin
   data class Address(var street: String, val city: String, val country: String)
@@ -122,7 +124,7 @@ Még kettőt mutatok, ahol lemásoljuk a struktúrát. Az első osztály hierarc
   println(user2) // ... Valami ...
 ```
 
-A második pedig listával:
+A másik is ezt a mintát fogja követni, de ezúttal egy kollekciót használva:
 
 ```kotlin
   data class Address(var street: String, val city: String, val country: String)
@@ -140,14 +142,18 @@ A második pedig listával:
   println(addresses2)
 ```
 
-Mindkét esetben lemásoltam a struktúrát, megváltoztattam a szokásos *street* mezőt, és bizony az eredetik is változtak. A megoldás az, hogy a *copy()* és a *toList()* nem mély másolatot készített. 
+Mindkét esetben lemásoltam a struktúrát, megváltoztattam a szokásos *street* mezőt, és bizony az eredetik is változtak. A háttérben az történik, hogy a *copy()* és a *toList()* sekély másolatot készítenek. Ez pedig azt jelenti, hogy a gyermek elemekből nem készített másolatot, egyszerűen csak átmásolja a referenciát, és ennyi. 
 
-Azaz a gyermek elemekből nem készített másolatot, csak átadta a referenciát az *address*-re. Az ilyen helyzetekre szoktuk mondani, hogy leakel a struktúra.
+Az ilyen helyzetekre szoktuk mondani, hogy leakel a struktúra, megváltoztatom az egyiket, és meglepetésre a másik is változik.
 
 ## Hogyan védekezhetek?
 
-Megoldások:
+Útravalóul mutatok néhány megoldási ötletet:
 
-* **1. és 2. probléma**: Figyelj arra, hogy a *data class*-ok minden mezője *val*-al legyen deklarálva.
+**1. probléma**: 
+  * Figyelj arra, hogy a *data class*-ok minden mezője *val*-al legyen deklarálva. 
+  * Sok helyen egészen odáig mennek, hogy mindehova *val*-t írnak, hacsak nincs egy kifejezett érv a *var* mellett.
+  * A unit testek jellemzően kiszűrik a hasonlóakat.
 
-* **3. probléma**: [TODO] deep copy
+**2. probléma**: 
+  * [TODO] deep copy

@@ -36,6 +36,21 @@ println(city)
 println(country)
 ```
 
+A dekstruktúrálás azonban a következő trükkös lehetőséget nyújtja:
+```kotlin
+data class Address(val street: String, val city: String, val country: String)
+
+val home = Address("Matyas kiraly u. 45", "Kazincbarcika", "Magyarország") 
+
+val (street, city, country) = home
+
+println(street)
+println(city)
+println(country)
+```
+
+A kód kicsit tömörebb és olvashatóbb lett, kevesebbet is kellett gépelni.
+
 **TIPP**: Érdemes próbálkozni a Ctrl+Space kombinációval, rettentő sokat tud segíteni ez a fajta okos kiegészítés.
 
 [TODO] Mikor hasznos igazán ez component1, 2, 3 megoldás? 
@@ -108,3 +123,24 @@ for((key, value) in map){
     println("Key: $key, Value: $value")
 }
 ```
+
+## Érdemes óvatosnak lenni
+
+Azonban tartogat ez a módszer bizonyos veszélyeket, amelyekre érdemes előre felkészülni. Tegyük fel kiegészítjük a data class objektumunkat egy *street2* propertyvel, ami szintén String típusú, de a destructuringon nem változtatunk. Mi fog történni?
+
+```kotlin
+data class Address(val street: String, val street2: String, val city: String, val country: String)
+
+val home = Address("Matyas kiraly u. 45", "", "Kazincbarcika", "Magyarország")
+
+val (street, city, country) = home
+
+println(street) // "Matyas kiraly u. 45"
+println(city) // ""
+println(country) // "Kazincbarcika"
+```
+
+Ugye nem teljesen erre számítottatok, ugye a *component2* megváltozott, és nem fogja úgy párosítani, ahogy egy ember tenné. Lesz egy nem várt elcsúszás, viszont fordítási időben erre semmi figyelmeztetést nem kapsz. Rossz hír továbbá, hogy nem lehet jelölni mivel kössük össze.
+
+
+

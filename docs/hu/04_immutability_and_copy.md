@@ -1,16 +1,4 @@
-# Mutable és immutable típusok
-
-## Tartalom
-
-- A copy jön a data classokkal... idea-ban mutasd be, ez nagyon egyszerű
-
-– Az hogy valami val, a referencia lesz immutable, mint a final... de ami benne van, az lehet mutable... nincs igazi immutable típus Kotlinban, neked kell csinálni
-- Leakelhet a mutabilitás
-
-- Kellenek példák
-- Hogy néz ki amikor ténylegesen immutable
-- Hogy néz ki, amikor nem, és leakel, ezt be kell mutatni
-- Hogyan lehet kiküszöbölni a leakelést
+# Mutable és immutable típusok?
 
 ## Bevezető gondolatok
 
@@ -76,7 +64,7 @@ Ez pedig lemehet tetszőleg mélységig:
 
 Eddig egészen úgy működik, ahogy azt várnánk, itt tényleg immutable.
 
-## De nem mindig az
+## Probléma #1: Osztály hierarchia
 
 Mutatok egy példát, ahol kicsit a fejük tetejére fognak állni a dolgok:
 
@@ -97,6 +85,8 @@ Az előző példával ellentétben most simán meg tudtam változtatni ezt az é
 
 Tehát a *val*-tól nem lett a teljes adatstruktúra immutable!
 
+## Probléma #2: Kollekció
+
 Mutatok még egy példát:
 
 ```kotlin
@@ -114,8 +104,50 @@ Mutatok még egy példát:
 
 Nagyon hasonló mint az előző. Nem tudok a kollekcióhoz új elemet hozzáadni, vagy egy meglévőt kivenni, ez nem lehetséges. Azonban a *street* mezőt bármelyik objektum esetében meg tudom változatni. 
 
-Az ilyen helyzetekre szoktuk mondani, hogy leakel a struktúra.
+## Probléma #3: Copy
+
+Még kettőt mutatok, ahol lemásoljuk a struktúrát. Az első osztály hierarchiával:
+
+```kotlin
+  data class Address(var street: String, val city: String, val country: String)
+  data class User(val name: String, var address: Address)
+
+  val address = Address("Matyas kiraly u. 45.", "Kazincbarcika", "Magyarország")
+  val user = User("Gabor", address)
+
+  val user2 = user.copy()
+  user2.address.street = "Valami"
+
+  println(user) // ... Valami ...
+  println(user2) // ... Valami ...
+```
+
+A második pedig listával:
+
+```kotlin
+  data class Address(var street: String, val city: String, val country: String)
+  data class User(val name: String, var address: Address)
+
+  val address1 = Address("Matyas kiraly u. 45.", "Kazincbarcika", "Magyarország")
+  val address2 = Address("Kossuth Lajos u. 12.", "Baja", "Magyarország")
+
+  val addresses = listOf<Address>(address1, address2)
+  val addresses2 = addresses.toList()
+
+  addresses2[0].street = "Valami"
+
+  println(addresses)
+  println(addresses2)
+```
+
+Mindkét esetben lemásoltam a struktúrát, megváltoztattam a szokásos *street* mezőt, és bizony az eredetik is változtak. A megoldás az, hogy a *copy()* és a *toList()* nem mély másolatot készített. 
+
+Azaz a gyermek elemekből nem készített másolatot, csak átadta a referenciát az *address*-re. Az ilyen helyzetekre szoktuk mondani, hogy leakel a struktúra.
 
 ## Hogyan védekezhetek?
 
-[TODO]
+Megoldások:
+
+* **1. és 2. probléma**: Figyelj arra, hogy a *data class*-ok minden mezője *val*-al legyen deklarálva.
+
+* **3. probléma**: [TODO] deep copy

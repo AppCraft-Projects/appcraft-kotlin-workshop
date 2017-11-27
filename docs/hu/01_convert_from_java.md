@@ -5,8 +5,9 @@
 Egy új nyelv esetében, nyilvánvaló nehézséget okoz, ha a régi nyelven írt dolgokat az újra át kell írni. Itt jön jól minden tooling segítség, és ebben a JetBrains emberei zseniálisak.
 
 Mind az IntelliJ IDEA-ba, mind az Android Studioban beépítve megtalálható egy elég frankó átalakító eszköz. Két irányból is elérhető:
-- Mint action is elérhető (Shift+Cmd+A), majd *Convert Java File to Kotlin File*
-- Illetve a főmenüben, *Code / Convert Java File to Kotlin File* parancs
+- Mint action is elérhető (Shift+Cmd+A), majd *Convert Java File to Kotlin File*.
+- Illetve a főmenüben, *Code / Convert Java File to Kotlin File* parancs.
+- Van egy kis online eszköz is, [itt](https://try.kotlinlang.org/). Jobb felül keresd a Convert from Java gombot.
 
 Ennyi az egész. 
 

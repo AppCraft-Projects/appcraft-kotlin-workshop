@@ -7,6 +7,7 @@ Egy új nyelv esetében, nyilvánvaló nehézséget okoz, ha a régi nyelven ír
 Mind az IntelliJ IDEA-ba, mind az Android Studioban beépítve megtalálható egy elég frankó átalakító eszköz. Két irányból is elérhető:
 - Mint action is elérhető (Shift+Cmd+A), majd *Convert Java File to Kotlin File*.
 - Illetve a főmenüben, *Code / Convert Java File to Kotlin File* parancs.
+- Valamint, és ez igazi *MAGIC, copy-paste-el is működik.
 - Van egy kis online eszköz is, [itt](https://try.kotlinlang.org/). Jobb felül keresd a Convert from Java gombot.
 
 Ennyi az egész. 
@@ -68,5 +69,5 @@ Azt szoktuk javasolni, hogy érdemes kisebb egységekben (funkció, legfeljebb o
 - Ami nekem nem tetszik, hogy az interfacebe rak fieldeket (get valami, set valamiból fieldek) [TODO] keressetek példát
 - Van hogy hiábra fut, kommenteket nem vesz át [TODO] keressetek példát
 - A bitműveleteket nem kezeli mindig jól (nézni fogod, hogy mi az shl - mondjuk shift left) [TODO] keressetek példát
-- Array-ek konvertálása nem mindig az igazi, pl ByteArray, ami spéci Kotlinos cucc [TODO] keressetek példát
+- Array-ek konvertálása nem mindig az igazi, pl ByteArray / BitVector, ami spéci Kotlinos cucc [TODO] keressetek példát
 

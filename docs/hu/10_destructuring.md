@@ -91,41 +91,6 @@ println(row)
 
 **TIPP**: Ha sok elemes az objektum, de neked csak az első 1-2 elem kell, akkor csinálhatod azt, hogy csak az elsőt destrukturálod, a többihez pedig nem teszel ki alsó vonást.
 
-## Komplex visszatérési érték
-
-Az előző példán csavarunk egy kicsit. Speciális esetben lehetőség van a Pair és Triple osztályok használatára is.
-
-```kotlin
-data class Position(val column: Int,
-                    val row: Int)
-
-fun twoValuesReturn(): Pair<Int, String> {
-    val position = Position(3, 4)
-    val (column, row) = postion
-    return Pair(column, row)
-}
- 
-val (column, row) = twoValuesReturn()
-```
-
-Azonban érdemes óvatosnak lenni vele, habár néha hasznos, de sokszor nehezebb áttekinteni, hogy melyik érték mi is volt.
-
-## Map és bejárás
-
-A `Map` struktúra esetében azonban szépen megjelenik a `Pair`, az lényegében ilyeneket kezel. 
-
-```kotlin
-data class Position(val column: Int,
-                    val row: Int)
-
-var map: HashMap<Int, Int> = HashMap()
-map.put(1, Position(3, 4))
- 
-for((key, value) in map){
-    println("Key: $key, Value: $value")
-}
-```
-
 ## Érdemes óvatosnak lenni
 
 Azonban tartogat ez a módszer bizonyos veszélyeket, amelyekre érdemes előre felkészülni. Tegyük fel kiegészítjük a data class objektumunkat egy *street2* propertyvel, ami szintén String típusú, de a destructuringon nem változtatunk. Mi fog történni?
@@ -145,5 +110,37 @@ println(row) // 3
 
 Ugye nem teljesen erre számítottatok, az van, hogy a *component2* megváltozott, és nem fogja úgy párosítani, ahogy azt egy ember tenné. Lesz egy nem várt elcsúszás, viszont fordítási időben erre semmi figyelmeztetést nem kapsz. Rossz hír továbbá, hogy nem lehet jelölni mivel kössük össze.
 
+## `Pair` és `Triple`
 
+Az előző példán csavarunk egy kicsit. Speciális esetben lehetőség van a `Pair` és `Triple` osztályok használatára is.
 
+```kotlin
+data class Position(val column: Int,
+                    val row: Int)
+
+fun twoValuesReturn(): Pair<Int, Int> {
+  val position = Position(3, 4)
+  val (column, row) = position
+  return Pair(column, row)
+}
+
+val (column, row) = twoValuesReturn()
+```
+
+Azonban érdemes óvatosnak lenni vele, habár néha hasznos, de sokszor nehezebb áttekinteni, hogy melyik érték mi is volt.
+
+## Map és bejárás
+
+A `Map` struktúra esetében azonban szépen megjelenik a `Pair`, az lényegében ilyeneket kezel. Ilyen helyzetben tényleg jó is használni őket.
+
+```kotlin
+data class Position(val column: Int,
+                    val row: Int)
+
+var map: HashMap<Int, Position> = HashMap()
+map.put(1, Position(3, 4))
+ 
+for((key, value) in map){
+  println("Key: $key, Value: $value")
+}
+```

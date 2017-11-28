@@ -46,4 +46,4 @@ Ez esetben szintén egy nagyon gyakran használt osztályt egészíthetsz ki egy
 
 Ilyen esetben érdemes kerülni.
 
-[TODO] Helyette érdemesebb inkább...
+Helyette érdemesebb inkább a funkciót a domain objectbe rakni.

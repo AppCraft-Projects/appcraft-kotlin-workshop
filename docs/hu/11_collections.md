@@ -2,15 +2,7 @@
 
 ## Bevezető
 
-Kotlin egy körültekintően megépített *Standard Libraryval* érkezik, számos gyakran alkalmazott funkciót és annotációt foglal magába.
-
-Viszonylag pici a mérete, nagyjából **750KB**, így nem növeli meg túlzottan az alkalamzás méretét. Ráadásul az Android fejlesztőkre is gondoltak, a metódusok számát is igyekeztek alacsonyan tartani.
-
-Több stílust is tartalmaz: 
-- High-order funkciók, amelyek a funkcionális programozást segítik elő.
-- Kiegészítő (extension) funkciókkal bővíti a meglévő Java osztályok képességeit. 
-
-Megtalálható az összes jól megszokott kollekció:
+Kotlinban is megtalálható az összes jól megszokott kollekció:
 - Lists
 - Arrays (beleértve az ekvivalens "primitív típusokat is")
 - Maps
@@ -19,23 +11,9 @@ Megtalálható az összes jól megszokott kollekció:
 - HashSet
 - Stb.
 
-## Deklaráció és type inference
-
-Lássunk is hozzá:
-```kotlin
-// Sima kollekció deklaráció
-val list: List<String> = ArrayList<String>()
-```
-
-Elsőre talán nem tűnik fel, de az IDE jelezni fog némi problémát.
-```kotlin
-// Az ArrayList után nincs szükség a típusra, a type inference megoldja
-val list: List<String> = ArrayList()
-```
-
 ## Mutable vs Immutable
 
-Továbbá érdemes *Cmd / Ctrl + klikkel* egy pillantást vetni a forráskódra, a következő szerepel ott. 
+Tekintsünk egy sima List deklarációt, ott érdemes **Cmd / Ctrl + klikkel** egy pillantást vetni a forráskódra, a következő szerepel ott. 
 ```kotlin
 /**
  * A generic ordered collection of elements. Methods in this interface support only read-only access to the list;
@@ -46,22 +24,20 @@ Továbbá érdemes *Cmd / Ctrl + klikkel* egy pillantást vetni a forráskódra,
 
 Csak olvasási hozzáférést ad, ha írni is akarjuk, akkor a `MutableList`-et kell bevezetni. 
 
-Az összes kollekciónak tehát két verziója van, egyaránt biztosít *mutable* és *immutable interface-eket*. 
-
-> TODO: Ábrát ide.
+Az összes kollekciónak tehát két verziója van, egyaránt biztosít *mutable* és *immutable interface-eket*. Fontos, nem a kollekció maga immutable, csak kínál egy olyan `interface`-t, ahol nincs `add`, `remove` és hasonló mutáló operátorok.
 
 ## A Java kollekciókra épít
 
-Ez a Cmd / Ctrl + klikk jó cucc, az összes osztálynak a forrása megtekinthető így. Lásd például az `ArrayList`-et.
+Másik jó **Cmd / Ctrl + klikkes** cuccot az `ArrayList`-nél látod:
 ```kotlin
 @SinceKotlin("1.1") public typealias ArrayList<E> = java.util.ArrayList<E>
 ```
 
-Figyeljétek a sor végét, itt egy újabb fontos megállapítás. A Kotlin nem definiál saját kollekciókat, a Java alap osztályait egészíti ki új képességekkel. Legyenek azek a fent látott interfacek (mutable / immutable), vagy kiegészítő funckiók.
+Figyeljétek a sor végét, itt egy újabb fontos megállapítás. A Kotlin jellemzően nem definiál saját kollekciókat, a Java alap osztályait egészíti ki új képességekkel. Legyenek azek a fent látott interfacek (mutable / immutable), vagy kiegészítő funckiók.
 
 ## Kollekciók létrehozása (listOf, mapOf)
 
-Egy listát jellemzően nem a fenti módon szoktunk létrehozni, inkább a `listOf()` funckióval.
+Egy listát egyébként a `listOf()` funckióval szokás létrehozni.
 ```kotlin
 // Számok
 val numbers = 1..100 

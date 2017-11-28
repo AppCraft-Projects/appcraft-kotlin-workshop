@@ -16,47 +16,73 @@ Példaképp alakítsunk át egy darabka Java kódot Koltinra.
 
 Így néz ki Java-ban:
 ```java
-public class JavaCode {
-  public String toJSON(Collection<Integer> collection) {
-    StringBuilder sb = new StringBuilder();
-    sb.append("[");
-    Iterator<Integer> iterator = collection.iterator();
-    while (iterator.hasNext()) {
-      Integer element = iterator.next();
-      sb.append(element);
-      if (iterator.hasNext()) {
-          sb.append(", ");
-      }
+public class Size {
+
+    private final int columns;
+    private final int rows;
+
+    public Size(int columns, int rows) {
+        this.columns = columns;
+        this.rows = rows;
     }
-    sb.append("]");
-    return sb.toString();
-  }
+
+    public int getColumns() {
+        return columns;
+    }
+
+    public int getRows() {
+        return rows;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Size size = (Size) o;
+        return getColumns() == size.getColumns() &&
+                getRows() == size.getRows();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getColumns(), getRows());
+    }
+
+    @Override
+    public String toString() {
+        return "Size{" +
+                "columns=" + columns +
+                ", rows=" + rows +
+                '}';
+    }
 }
 ```
 
 Így pedig Koltinban:
 ```kotlin
-class JavaCode {
-  fun toJSON(collection:Collection<Int>):String {
-    val sb = StringBuilder()
-    sb.append("[")
-    val iterator = collection.iterator()
-    while (iterator.hasNext())
-    {
-      val element = iterator.next()
-      sb.append(element)
-      if (iterator.hasNext())
-      {
-        sb.append(", ")
-      }
+class Size(val columns: Int, val rows: Int) {
+
+    override fun equals(o: Any?): Boolean {
+        if (this === o) return true
+        if (o == null || javaClass != o.javaClass) return false
+        val size = o as Size?
+        return columns == size!!.columns && rows == size.rows
     }
-    sb.append("]")
-    return sb.toString()
-  }
+
+    override fun hashCode(): Int {
+        return Objects.hash(columns, rows)
+    }
+
+    override fun toString(): String {
+        return "Size{" +
+                "columns=" + columns +
+                ", rows=" + rows +
+                '}'
+    }
 }
 ```
 
-Itt egyelőre minimális a különbség, de majd meglátjátok, össze fog az eredmény összemenni még sokkal-sokkal jobban is.
+Már így is kijön egy jelentősebb különbség, de majd meglátjátok, össze fog az eredmény összemenni még sokkal-sokkal jobban is.
 
 ## Tapasztalatok
 

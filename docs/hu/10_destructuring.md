@@ -4,120 +4,120 @@ Vitán felül a legegyszerűbb téma következik most, mégis sokszor nagyon has
 
 ## Mit jelent a destruktúrálás?
 
-Destructuring valójában egy egyszerű és könnyed módja annak, hogy kicsomagoljunk egy Data Classot. 
+Destructuring valójában egy egyszerű és könnyed módja annak, hogy kicsomagoljunk egy *data class*ot. 
 
-A jobb érthetőség kedvéért alap példát az Address osztállyal, így csináltuk volna ezt a régi eszköztárral:
+A jobb érthetőség kedvéért alap példát az `Position` osztállyal, így csináltuk volna ezt a régi eszköztárral:
 ```kotlin
-data class Address(val street: String, val city: String, val country: String)
+data class Position(val column: Int,
+                    val row: Int)
 
-val home = Address("Matyas kiraly u. 45", "Kazincbarcika", "Magyarország") 
+val position = Position(3, 4)
 
-val street = home.street
-val city = home.city 
-val coutry = home.country
+val column = postion.column
+val row = postition.row
 
-println(street)
-println(city)
-println(country)
+println(column)
+println(row)
 ```
 
 Van erre egy másik megoldási lehetőség is:
 ```kotlin
-data class Address(val street: String, val city: String, val country: String)
+data class Position(val column: Int,
+                    val row: Int)
 
-val home = Address("Matyas kiraly u. 45", "Kazincbarcika", "Magyarország") 
+val position = Position(3, 4)
 
-val street = home.component1
-val city = home.component2
-val coutry = home.component3
+val column = postion.component1
+val row = postition.component2
 
-println(street)
-println(city)
-println(country)
+println(column)
+println(row)
 ```
-
-A dekstruktúrálás azonban a következő trükkös lehetőséget nyújtja:
-```kotlin
-data class Address(val street: String, val city: String, val country: String)
-
-val home = Address("Matyas kiraly u. 45", "Kazincbarcika", "Magyarország") 
-
-val (street, city, country) = home
-
-println(street)
-println(city)
-println(country)
-```
-
-A kód kicsit tömörebb és olvashatóbb lett, kevesebbet is kellett gépelni.
 
 **TIPP**: Érdemes próbálkozni a Ctrl+Space kombinációval, rettentő sokat tud segíteni ez a fajta okos kiegészítés.
 
-[TODO] Mikor hasznos igazán ez component1, 2, 3 megoldás? 
+A dekstruktúrálás azonban a következő trükkös lehetőséget nyújtja:
+```kotlin
+data class Position(val column: Int,
+                    val row: Int)
+
+val position = Position(3, 4)
+
+val (column, row) = postion
+
+println(column)
+println(row)
+```
+
+A kód kicsit tömörebb és olvashatóbb lett, kevesebbet is kellett gépelni.
 
 ## Visszatérési érték desktruktúrálása
 
 Lényegében ugyanígy történik akkor is, ha funkció visszatérési értékét kell szétbontani:
 
 ```kotlin
-data class Address(val street: String, val city: String, val country: String)
+data class Position(val column: Int,
+                    val row: Int)
 
-fun addressReturns() {
-  return Address("Matyas kiraly u. 45", "Kazincbarcika", "Magyarország") 
+fun positionReturns() {
+  return Position(3, 4)
 } 
 
-val (street, city, coutry) = someFunction()
+val (column, row) = postion
 
-println(street)
-println(city)
-println(country)
+println(column)
+println(row)
 ```
-
-## Komplex visszatérési érték
-
-Az előző példán csavarunk egy kicsit. Speciális esetben lehetőség van a Pair és Triple osztályok használatára is.
-
-```kotlin
-data class Address(val street: String, val city: String, val country: String)
-
-fun twoValuesReturn(): Pair<Int, String> {
-    return Pair(1, Address("Matyas kiraly u. 45", "Kazincbarcika", "Magyarország") )
-}
- 
-val (id, address) = twoValuesReturn()
-```
-
-[TODO] Mikor van igazán haszna a Pair és Triple használatának, erre lenne jó példát találni.
 
 ## Érték kihagyása
 
 Akkor azokat "_"-al kell jelölni:
 
 ```kotlin
-data class Address(val street: String, val city: String, val country: String)
+data class Position(val column: Int,
+                    val row: Int)
 
-val home = Address("Matyas kiraly u. 45", "Kazincbarcika", "Magyarország") 
+val position = Position(3, 4)
+val position2 = Position(6, 8)
 
-val (street, _, coutry) = home
-val (_, _, coutry2) = home
-val (street3, city3, _) = home
+val (column, _) = postion
+val (_, row) = postion2
 
-println(street)
-println(country)
-println(country2)
-println(street3)
-println(city3)
+println(column)
+println(row)
 ```
 
-**TIPP**: Érdemes próbálkozni a Alt+Enter kombinációval, rettentő sokat tud segíteni, felajánl okos átalakításokat, igazi *MAGIC*. 😍
+**TIPP**: Érdemes használni a Alt+Enter kombinációt, rettentő sokat tud segíteni, felajánl okos átalakításokat, igazi *MAGIC*. 😍
+
+## Komplex visszatérési érték
+
+Az előző példán csavarunk egy kicsit. Speciális esetben lehetőség van a Pair és Triple osztályok használatára is.
+
+```kotlin
+data class Position(val column: Int,
+                    val row: Int)
+
+fun twoValuesReturn(): Pair<Int, String> {
+    val position = Position(3, 4)
+    val (column, row) = postion
+    return Pair(column, row)
+}
+ 
+val (column, row) = twoValuesReturn()
+```
+
+Azonban érdemes óvatosnak lenni vele, habár néha hasznos, de sokszor nehezebb áttekinteni, hogy melyik érték mi is volt.
 
 ## Map és bejárás
 
-```kotlin
-data class Address(val street: String, val city: String, val country: String)
+A `Map` struktúra esetében azonban szépen megjelenik a `Pair`, az lényegében ilyeneket kezel. 
 
-var map: HashMap<Int, Person> = HashMap()
-map.put(1, Address("Matyas kiraly u. 45", "Kazincbarcika", "Magyarország"))
+```kotlin
+data class Position(val column: Int,
+                    val row: Int)
+
+var map: HashMap<Int, Int> = HashMap()
+map.put(1, Position(3, 4))
  
 for((key, value) in map){
     println("Key: $key, Value: $value")
@@ -129,18 +129,19 @@ for((key, value) in map){
 Azonban tartogat ez a módszer bizonyos veszélyeket, amelyekre érdemes előre felkészülni. Tegyük fel kiegészítjük a data class objektumunkat egy *street2* propertyvel, ami szintén String típusú, de a destructuringon nem változtatunk. Mi fog történni?
 
 ```kotlin
-data class Address(val street: String, val street2: String, val city: String, val country: String)
+data class Position(val deepth: Int,
+                    val column: Int,
+                    val row: Int)
 
-val home = Address("Matyas kiraly u. 45", "", "Kazincbarcika", "Magyarország")
+val postion = Position(12, 3, 4)
 
-val (street, city, country) = home
+val (column, row) = postion
 
-println(street) // "Matyas kiraly u. 45"
-println(city) // ""
-println(country) // "Kazincbarcika"
+println(column) // 12
+println(row) // 3
 ```
 
-Ugye nem teljesen erre számítottatok, ugye a *component2* megváltozott, és nem fogja úgy párosítani, ahogy egy ember tenné. Lesz egy nem várt elcsúszás, viszont fordítási időben erre semmi figyelmeztetést nem kapsz. Rossz hír továbbá, hogy nem lehet jelölni mivel kössük össze.
+Ugye nem teljesen erre számítottatok, az van, hogy a *component2* megváltozott, és nem fogja úgy párosítani, ahogy azt egy ember tenné. Lesz egy nem várt elcsúszás, viszont fordítási időben erre semmi figyelmeztetést nem kapsz. Rossz hír továbbá, hogy nem lehet jelölni mivel kössük össze.
 
 
 

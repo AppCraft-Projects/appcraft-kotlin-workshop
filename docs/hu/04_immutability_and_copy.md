@@ -146,7 +146,22 @@ Mindkét esetben lemásoltam a struktúrát, megváltoztattam a szokásos *stree
 
 Az ilyen helyzetekre szoktuk mondani, hogy leakel a struktúra, megváltoztatom az egyiket, és meglepetésre a másik is változik.
 
-## Hogyan védekezhetek?
+## Probléma #3: Mi van, ha immutable-t várunk, de mutable jön?
+
+Ez egy trükkös példa lesz, amit könnyű benézni.
+
+data class Border internal constructor(val borderType: BorderType,
+                                       val borderPositions: Set<BorderPosition>) {
+
+  companion object {
+    fun of(borderType: BorderType = BorderType.SOLID, 
+            borderPositions: Set<BorderPosition> = BorderPosition.values().toSet()) =
+
+      Border(borderType, borderPositions)
+  }
+}
+
+## Hogyan védekezhetek az előbbi problémák ellen?
 
 Útravalóul mutatok néhány megoldási ötletet:
 
@@ -157,3 +172,6 @@ Az ilyen helyzetekre szoktuk mondani, hogy leakel a struktúra, megváltoztatom 
 
 **2. probléma**: 
   * [TODO] deep copy
+
+**3. probléma**: 
+  * [TODO] Beszélj erről Ádámmal

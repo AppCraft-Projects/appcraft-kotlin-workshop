@@ -1,4 +1,4 @@
-package workshop.kotlin._06_if_when_range
+package workshop.kotlin._06_expression_statement
 
 import java.awt.Color
 import java.util.regex.Pattern

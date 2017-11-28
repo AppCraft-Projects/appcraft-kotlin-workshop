@@ -24,6 +24,7 @@ data class Border internal constructor(val borderType: BorderType,
         // TODO: fix this method to pass the test
         fun of(borderType: BorderType = BorderType.SOLID,
                borderPositions: Set<BorderPosition> = BorderPosition.values().toSet()) =
+
                 Border(borderType, borderPositions)
     }
 }

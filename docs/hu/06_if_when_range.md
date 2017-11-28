@@ -4,7 +4,7 @@
 
 A Kotlin esetében különösen éles, ahogy ez a két fogalom elválik egymástól, valamint ahogy azt látni fogjátok, a különbség a Java-val szemben egészen szembetűnő.
 
-### Expression
+### Expression
 
 > Az expression tartalmaz változókat és operátorokat és pontosan egy értéket adnak vissza.
 
@@ -16,7 +16,7 @@ score = 90 + 25
 
 Ebben a példában a `90 + 25` egy expression, egy Int értéket ad vissza.
 
-### Az *if* operátor is expression
+### Az *if* operátor is expression
 
 Vigyük egy kicsit tovább, a Kotlin esetében az `if` operátor is egy epxression. Ellenben Java-ban statement volt. 
 
@@ -32,20 +32,16 @@ Egy példa hamar meg fogja világítani:
 
 Ebben a példában az `if (a > b) a else b` az expression, ami Int értéket ad vissza és azt a `max` változóhoz rendeli.
 
-Egyébként azért jó, hogy az *if* operátor értékkel tér vissza, mert így rugalmasabban lehet használni, például át lehet adni függvénynek, ilyesmik.
-
-Valamint ennek köszönhetően nincs szükség a Java féle ?: operátorra, ez így sokkal simábban elintézhető.
-
-### Statement
+### Statement
 
 > A statement tartalmaz mindent, ami a végrehajtás egy teljes egységéhez szükséges. Az expression mindig egy statement része.
 
-Vegyünk egy egyszerű példát:
-```kotlin
-val score = 90 + 25
-```
+Ez alapján az előző példában az `if (a > b) a else b` az expression, a `max = if (a > b) a else b` pedig a statment. 
 
-Ebben a példában `90 + 25` egy expression, azonban `val score = 90 + 25` már egy statement.
+### Miért jó, ha az *if* expression?
+Azért jó, hogy az *if* operátor értékkel tér vissza, mert így rugalmasabban lehet használni, például át lehet adni függvénynek, ilyesmik.
+
+Valamint ennek köszönhetően nincs szükség a Java féle ?: operátorra, ez így sokkal simábban elintézhető.
 
 ## A *when* operátor
 
@@ -68,3 +64,5 @@ when (x) {
 ```
 
 Rengeteg olyan finomság, amit a switch nem tudott, ezáltal nagyban egyszerűsíthető a kód.
+
+Kiegészítésként még annyit, hogy a `when` is expression, ez pedig az `if`-hez hasonló előnyökkel jár.

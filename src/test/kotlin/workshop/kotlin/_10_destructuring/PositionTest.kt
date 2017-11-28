@@ -14,8 +14,6 @@ class PositionTest {
         val column: Int = 0
         val row: Int = 0
 
-
-
         TODO("Change the above code to use a destructuring declaration to set the value of column and row")
 
         assertThat(column).isEqualTo(3)

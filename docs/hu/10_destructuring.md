@@ -89,6 +89,8 @@ println(row)
 
 **TIPP**: Érdemes használni a Alt+Enter kombinációt, rettentő sokat tud segíteni, felajánl okos átalakításokat, igazi *MAGIC*. 😍
 
+**TIPP**: Ha sok elemes az objektum, de neked csak az első 1-2 elem kell, akkor csinálhatod azt, hogy csak az elsőt destrukturálod, a többihez pedig nem teszel ki alsó vonást.
+
 ## Komplex visszatérési érték
 
 Az előző példán csavarunk egy kicsit. Speciális esetben lehetőség van a Pair és Triple osztályok használatára is.

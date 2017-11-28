@@ -17,14 +17,12 @@ enum class BorderPosition {
 data class Border internal constructor(val borderType: BorderType,
                                        val borderPositions: Set<BorderPosition>) {
 
-    // TODO: add a method which creates a defensive copy
-
     companion object {
 
         // TODO: fix this method to pass the test
         fun of(borderType: BorderType = BorderType.SOLID,
                borderPositions: Set<BorderPosition> = BorderPosition.values().toSet()) =
 
-                Border(borderType, borderPositions)
+            Border(borderType, borderPositions)
     }
 }

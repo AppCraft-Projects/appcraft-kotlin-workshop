@@ -157,9 +157,11 @@ data class Border internal constructor(val borderType: BorderType,
     fun of(borderType: BorderType = BorderType.SOLID, 
             borderPositions: Set<BorderPosition> = BorderPosition.values().toSet()) =
 
-      Border(borderType, borderPositions)
+      Border(borderType, borderPositions.toSet())
   }
 }
+
+Amikor építed akkor Set-et vársz, de elfogad MutableSet-et is, mert az a gyereke. Ilyenre nincs felkészítve és felrobbanhat.
 
 ## Hogyan védekezhetek az előbbi problémák ellen?
 
@@ -174,4 +176,8 @@ data class Border internal constructor(val borderType: BorderType,
   * [TODO] deep copy
 
 **3. probléma**: 
-  * [TODO] Beszélj erről Ádámmal
+  * Készíts defenzív copy-t. Sajnos a nyelv nincs erre felkészítve, bizony pedánsnak kell lenni.
+
+```kotlin
+Border(borderType, borderPositions.toSet())
+```

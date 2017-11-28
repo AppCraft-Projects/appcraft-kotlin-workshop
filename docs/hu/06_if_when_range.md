@@ -49,20 +49,96 @@ A C-stílusú nyelvek `switch` operátorát váltja a `when`. Működését teki
 
 Lássunk egy példát, érteni fogjátok:
 ```kotlin
-when (x) {
-  1 -> print("x == 1")
-  2, 3 -> print("x == 2 or x == 3")
-  parseInt(s) -> print("s encodes x")
-  in 4..10 -> print("x is in the range")
-  !in 4..10 -> print("x is outside the range")
-  x.isOdd() -> print("x is odd")
-  x.isEven() -> print("x is even")
-  else -> { // Note the block
-      print("x is neither 1 nor 2")
-  }
+fun Int.isOdd() = this % 2 == 1
+fun Int.isEven() = this % 2 == 0
+
+fun main(args: Array<String>) {
+    val x = 3
+
+    when (x) {
+        1 -> print("x == 1")
+        2, 3 -> print("x == 2 or x == 3")
+        in 4..10 -> print("x is in the range")
+        !in 4..10 -> print("x is outside the range")
+        else -> { // Note the block
+            print("x is neither 1 nor 2")
+        }
+    }
+
+    when {
+        x.isEven() -> print("x is even")
+        x.isOdd() -> print("x is odd")
+        else -> print("WAT?")
+    }
 }
 ```
 
 Rengeteg olyan finomság, amit a switch nem tudott, ezáltal nagyban egyszerűsíthető a kód.
 
 Kiegészítésként még annyit, hogy a `when` is expression, ez pedig az `if`-hez hasonló előnyökkel jár.
+
+## Egy gyakorlatias példa a végére
+
+Kezdjünk ezzel a példával:
+
+```kotlin
+object TextColorFactory {
+
+  // TODO: simplify this method by using the `if` with a `return` statement
+  fun fromString(value: String): Color {
+    val result: Color?
+    if (RGB_COLOR_PATTERN.matcher(value).matches()) {
+      val r = Integer.parseInt(value.substring(1, 3), 16)
+      val g = Integer.parseInt(value.substring(3, 5), 16)
+      val b = Integer.parseInt(value.substring(5, 7), 16)
+      result = Color(r, g, b)
+    } else {
+      throw IllegalArgumentException("Unknown color definition \"" + value + "\"")
+    }
+    return result
+  }
+
+  private val RGB_COLOR_PATTERN = Pattern.compile("#[0-9a-fA-F]{6}")
+}
+```
+
+Ez egy tipikus Java-s kód, de mivel itt az if egy epxression, így lehet csinálni belőle egy ilyet, kitörölni a resultos részt.
+
+```kotlin
+object TextColorFactory {
+
+    // TODO: simplify this method by using the `if` with a `return` statement
+    fun fromString(value: String): Color {
+        return if (RGB_COLOR_PATTERN.matcher(value).matches()) {
+            val r = Integer.parseInt(value.substring(1, 3), 16)
+            val g = Integer.parseInt(value.substring(3, 5), 16)
+            val b = Integer.parseInt(value.substring(5, 7), 16)
+            Color(r, g, b)
+        } else {
+            throw IllegalArgumentException("Unknown color definition \"" + value + "\"")
+        }
+    }
+
+    private val RGB_COLOR_PATTERN = Pattern.compile("#[0-9a-fA-F]{6}")
+}
+```
+
+Következő lépés, hogy nem kell a return se, és a visszatérési érték sem. Az = jel mindig legyen a sor végén, a következő sortól legyen a kód.
+
+```kotlin
+object TextColorFactory {
+
+    // TODO: simplify this method by using the `if` with a `return` statement
+    fun fromString(value: String) =
+        if (RGB_COLOR_PATTERN.matcher(value).matches()) {
+            val r = Integer.parseInt(value.substring(1, 3), 16)
+            val g = Integer.parseInt(value.substring(3, 5), 16)
+            val b = Integer.parseInt(value.substring(5, 7), 16)
+            Color(r, g, b)
+        } else {
+            throw IllegalArgumentException("Unknown color definition \"" + value + "\"")
+        }
+
+    private val RGB_COLOR_PATTERN = Pattern.compile("#[0-9a-fA-F]{6}")
+}
+```

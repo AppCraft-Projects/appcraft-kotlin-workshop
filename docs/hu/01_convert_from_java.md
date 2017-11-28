@@ -7,14 +7,38 @@ Egy új nyelv esetében, nyilvánvaló nehézséget okoz, ha a régi nyelven ír
 Mind az IntelliJ IDEA-ba, mind az Android Studioban beépítve megtalálható egy elég frankó átalakító eszköz. Két irányból is elérhető:
 - Mint action is elérhető (Shift+Cmd+A), majd *Convert Java File to Kotlin File*.
 - Illetve a főmenüben, *Code / Convert Java File to Kotlin File* parancs.
-- Valamint, és ez igazi *MAGIC, copy-paste-el is működik.
+- Valamint, és ez igazi *MAGIC*, copy-paste-el is működik.
 - Van egy kis online eszköz is, [itt](https://try.kotlinlang.org/). Jobb felül keresd a Convert from Java gombot.
 
 Ennyi az egész. 
 
-Példaképp alakítsunk át egy darabka Java kódot Koltinra.
+Mindenek előtt, egy kis projekt konfiguráció, ha egy *Java* projektet szeretnél átalakítani, akkor a *build.gradle* file-on érdemes egy kicsit alakítani, hogy befogadja a *Kotlin*-t:
 
-Így néz ki Java-ban:
+```groovy
+buildscript {
+    // ...
+
+	dependencies {
+		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
+	}
+}
+
+apply plugin: 'kotlin'
+
+// ...
+
+dependencies {
+	compile("org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}")
+
+    // ...
+}
+```
+
+Most egyébként mi eleve Kotlinos projektet generáltunk, így ez jól is van így.
+
+Következő lépésként lássunk egy gyakorlati példát, alakítsunk át egy darabka Java kódot Koltinra. 
+
+Így néz ki eredetileg Java-ban:
 ```java
 public class Size {
 
@@ -58,7 +82,7 @@ public class Size {
 }
 ```
 
-Így pedig Koltinban:
+Majd ilyen lesz Koltinban:
 ```kotlin
 class Size(val columns: Int, val rows: Int) {
 

@@ -375,64 +375,6 @@ val (result, status) = callHTTPEndpoint("http://www.google.com")
 
 ```
 
-## Kiegészítő funkciók
-
-A Kotlin támogat kiegészítő funkciókat. Ezek gyakorlatilag a dekorátor mintát valósítják meg, de működnek
-olyan helyen is, ahol a klasszikus dekorátorok nem (például `final` osztályok).
-
-Nézzünk meg egy Java dekorátort:
-
-```java
-public class ListPresenterDecorator<T> extends AbstractList<T> {
-
-    private List<T> list;
-
-    public ListPresenterDecorator(List<T> list) {
-        this.list = list;
-    }
-
-    public String present() {
-        return list.stream()
-                .map(Object::toString)
-                .collect(Collectors.joining(", "));
-    }
-
-    @Override
-    public T get(int index) {
-        return list.get(index);
-    }
-
-    @Override
-    public int size() {
-        return list.size();
-    }
-}
-```
-
-Ugyanez Kotlinban kiegészítő funkcióval:
-
-```kotlin
-fun <T> List<T>.present() = this.joinToString(", ")
-```
-
-Ez a funkció dekorátorként viselkedik minden `List` példányon.
-
-Sok esetben érdemes kiegészítő funkciókat deklarálni olyan műveletek megfogalmazására, melyek az egész rendszerünkben igazak, például:
-
-```kotlin
-    fun isPhoneNumber(s: String) = 
-        s.length == 7 &&
-        s.all {it.isDigit()}
-```
-
-helyett
-
-```kotlin
-    fun String.isPhoneNumber() = 
-        length == 7 &&
-        all {it.isDigit()}
-```
-
 ## Null biztonság
 
 A `null`-ok ellenőrzése általában sok logikai művelettel és boilerplate-tel jár.

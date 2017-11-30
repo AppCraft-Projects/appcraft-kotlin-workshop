@@ -106,7 +106,7 @@ Ez persze csak a navigáció, de támogatott a többi intent típus is.
 
 ### Dialógusablakok és toastok
 
-#### Toast
+#### Toast
 Korábban Java-ban így ment ez:
 ```java
 Context context = getApplicationContext();

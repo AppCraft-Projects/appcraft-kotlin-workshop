@@ -8,7 +8,7 @@ Például, ha egy olyan dekorátort szeretnénk készíteni, ami a `List` interf
 
 Persze ehhez kell az `AbstractList`hez hasonló megoldás, és jobb ha az osztály nem `final`.
 
-## Egy egyszerű példa
+## Egy egyszerű példa
 
 Így tudsz kiegészíteni egy `Int`-ekkel dolgozó `MutableList`-et:
 ```kotlin

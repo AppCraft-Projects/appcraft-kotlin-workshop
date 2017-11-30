@@ -35,7 +35,7 @@ A következő témákról lesz tehát szó a következő órákban:
 - [Linkgyűjtemény](https://github.com/AppCraft-Projects/appcraft-kotlin-workshop/blob/master/docs/hu/15_links.md)
 - Q&A
 
-## Anyagok
+## Anyagok
 
 Számos módon próbálunk nektek segíteni, hogy a nagy tempó ellenére jól tudjatok minket követni. Itt találtok egy jó kis előkészített repot: [http://bit.ly/hwsw-kotlin-workshop](http://bit.ly/hwsw-kotlin-workshop). 
 

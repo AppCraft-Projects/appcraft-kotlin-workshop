@@ -91,7 +91,7 @@ println(row)
 
 **TIPP**: Ha sok elemes az objektum, de neked csak az első 1-2 elem kell, akkor csinálhatod azt, hogy csak az elsőt destrukturálod, a többihez pedig nem teszel ki alsó vonást.
 
-## Érdemes óvatosnak lenni
+## Érdemes óvatosnak lenni
 
 Azonban tartogat ez a módszer bizonyos veszélyeket, amelyekre érdemes előre felkészülni. Tegyük fel kiegészítjük a data class objektumunkat egy *street2* propertyvel, ami szintén String típusú, de a destructuringon nem változtatunk. Mi fog történni?
 

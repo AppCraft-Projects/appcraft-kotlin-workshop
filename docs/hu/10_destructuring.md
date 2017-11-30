@@ -93,7 +93,7 @@ println(row)
 
 ## Érdemes óvatosnak lenni
 
-Azonban tartogat ez a módszer bizonyos veszélyeket, amelyekre érdemes előre felkészülni. Tegyük fel kiegészítjük a data class objektumunkat egy *street2* propertyvel, ami szintén String típusú, de a destructuringon nem változtatunk. Mi fog történni?
+Azonban tartogat ez a módszer bizonyos veszélyeket, amelyekre érdemes előre felkészülni. Tegyük fel kiegészítjük a data class objektumunkat egy *deepth* propertyvel, ami szintén String típusú, de a destructuringon nem változtatunk. Mi fog történni?
 
 ```kotlin
 data class Position(val deepth: Int,

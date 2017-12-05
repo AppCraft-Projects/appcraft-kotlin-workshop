@@ -38,7 +38,7 @@ Ebben a példában az `if (a > b) a else b` az expression, ami Int értéket ad 
 
 Ez alapján az előző példában az `if (a > b) a else b` az expression, a `max = if (a > b) a else b` pedig a statment. 
 
-### Miért jó, ha az *if* expression?
+### Miért jó, ha az *if* expression?
 Azért jó, hogy az *if* operátor értékkel tér vissza, mert így rugalmasabban lehet használni, például át lehet adni függvénynek, ilyesmik.
 
 Valamint ennek köszönhetően nincs szükség a Java-féle ?: operátorra, ez így sokkal simábban elintézhető.

@@ -110,7 +110,7 @@ A fenti példa így már lényegesen egyszerűbb.
 
 ## Any és Object
 
-Az `Any` típus az `Object` megfelelője Kotlinban, viszont csak azokat a függvényeket tartalmazza, amik feltétlenül szükségesek és gyakran használtak:
+Az `Any` típus az `Object` megfelelője Kotlin-ban, viszont csak azokat a függvényeket tartalmazza, amik feltétlenül szükségesek és gyakran használtak:
 
 ```kotlin
 public open class Any {
@@ -129,7 +129,7 @@ Az `Object`-hez hasonlóan az `Any` minden osztály őse, így a fenti három f�
 
 ## Mindennek az alja: a `Nothing`
 
-A `Nothing` égy talán szokatlan osztály a Kotlinban: minden egyéb osztálynak a gyermeke. Ez azt jelenti, hogy midnen
+A `Nothing` egy talán szokatlan osztály a Kotlin-ban: minden egyéb osztálynak a gyermeke. Ez azt jelenti, hogy minden
 függvényből visszatérhetünk `Nothing` típussal, viszont azt fontos tudnunk, hogy a `Nothing`-nak nem lehet egyetlen
 példánya sem, tehát mindig kivételt kell, hogy jelezzen egy függvény, ami `Nothing`-ot ad vissza.
 A `Nothing` használatával tudjuk tehát jelezni a nem létezést.

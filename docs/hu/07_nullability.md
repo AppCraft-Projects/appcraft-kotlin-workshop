@@ -69,7 +69,7 @@ data class KotlinUserWithoutNulls(val firstName: String,
 }
 ```
 
-Ha nincs a kódbázisunkban `null` (nics `?` sehol), akkor lényegesen egyszerűbb lesz az egész.
+Ha nincs a kódbázisunkban `null` (nincs `?` sehol), akkor lényegesen egyszerűbb lesz az egész.
 
 ## Hibalehetőségek
 

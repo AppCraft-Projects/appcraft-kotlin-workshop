@@ -4,15 +4,15 @@
 
 Mindketten nagyon szeretjük a nyelvet használni, és úgy érezzük nagyon szép jövő áll még előtte. Pláne majd amikor igazán megerősödik a multi-platformos vonal is. 
 
-Ezért is fogalmazódott meg bennünk még tavasszal workshop ötlete. A célunk egy olyan anyag összerakása volt, ahol a Java fejlesztőknek meg tudjuk mutatni a Kotlin nyelv előnyeit. Apró különbség, de annó még egy 2-3 napos teljes anyagot kezdtünk kidolgozni.
+Ezért is fogalmazódott meg bennünk még tavasszal workshop ötlete. A célunk egy olyan anyag összerakása volt, ahol a Java fejlesztőknek meg tudjuk mutatni a Kotlin nyelv előnyeit. Apró különbség, de anno még egy 2-3 napos teljes anyagot kezdtünk kidolgozni.
 
-Majd nyáron elkezdtünk beszélgetni erről Gálffy Csabával, és felvetődött, hogy ez az egész szuper lenne a HWSW konferenicán is. Persze kicsit másképp, nem lesz rá 2-3 nap, inkább három, de úgy gondoltuk meg lehet ezt csinálni. Sokkal pörgősebb, fókuszáltabb egy jó áttekintést tudunk ad a nyelvről megszerzett tapasztalatainkból.
+Majd nyáron elkezdtünk beszélgetni erről Gálffy Csabával, és felvetődött, hogy ez az egész szuper lenne a HWSW konferencián is. Persze kicsit másképp, nem lesz rá 2-3 nap, inkább három, de úgy gondoltuk meg lehet ezt csinálni. Sokkal pörgősebb, fókuszáltabb egy jó áttekintést tudunk ad a nyelvről megszerzett tapasztalatainkból.
 
 Fontos hangsúlyozni, hogy most törekszünk teljességre inkább a mindennapokban elterjedtebb, illetve jól használható részekre koncentrálunk. Nem kifejezetten a domain specifikus alkalmazást, avagy az Android vagy mondjuk a Spring fejlesztést tárgyaljuk. Habár az előbbiről az Anko kapcsán lesz szó. Inkább olyan tudást adunk át, amelyet mindkét területen jól lehet használni.
 
 Egyébként folyamatosan törekedtünk arra, hogy minél inkább életszerű kódokkal dolgozzunk, ezért a példa kódok jelentős részét Ádám egyik projektéből, a Zirconból emeltük át, ami erre található: [http://bit.ly/adam-zircon](http://bit.ly/adam-zircon).
 
-Ezek alapján biztos érzitek, hogy zúzós dologra vállalkoztok a következő órákban, és bizony feszes lesz a tempó. Ne számítsatok egy hagyományos elmélyülős-mentorálás workshopra. Inkább tekintsetek erre úgy, mint egy interaktív előadásra, ami azért egészen mélyen tud a témában elmerülni.
+Ezek alapján biztos érzitek, hogy zúzós dologra vállalkoztok a következő órákban, és bizony feszes lesz a tempó. Ne számítsatok egy hagyományos elmélyülős-mentorálós workshopra. Inkább tekintsetek erre úgy, mint egy interaktív előadásra, ami azért egészen mélyen tud a témában elmerülni.
 
 ## Tartalom
 

@@ -18,7 +18,7 @@ Ebben a példában a `90 + 25` egy expression, egy Int értéket ad vissza.
 
 ### Az *if* operátor is expression
 
-Vigyük egy kicsit tovább, a Kotlin esetében az `if` operátor is egy epxression. Ellenben Java-ban statement volt. 
+Vigyük egy kicsit tovább, a Kotlin esetében az `if` operátor is egy expression. Ellenben Java-ban statement volt. 
 
 Egy példa hamar meg fogja világítani:
 ```kotlin
@@ -41,7 +41,7 @@ Ez alapján az előző példában az `if (a > b) a else b` az expression, a `max
 ### Miért jó, ha az *if* expression?
 Azért jó, hogy az *if* operátor értékkel tér vissza, mert így rugalmasabban lehet használni, például át lehet adni függvénynek, ilyesmik.
 
-Valamint ennek köszönhetően nincs szükség a Java féle ?: operátorra, ez így sokkal simábban elintézhető.
+Valamint ennek köszönhetően nincs szükség a Java-féle ?: operátorra, ez így sokkal simábban elintézhető.
 
 ## A *when* operátor
 
@@ -102,7 +102,7 @@ object TextColorFactory {
 }
 ```
 
-Ez egy tipikus Java-s kód, de mivel itt az if egy epxression, így lehet csinálni belőle egy ilyet, kitörölni a resultos részt.
+Ez egy tipikus Java-s kód, de mivel itt az if egy expression, így lehet csinálni belőle egy ilyet, kitörölni a result-os részt.
 
 ```kotlin
 object TextColorFactory {

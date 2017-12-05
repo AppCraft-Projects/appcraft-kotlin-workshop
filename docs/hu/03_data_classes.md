@@ -2,7 +2,7 @@
 
 ## A Kotlin módszer
 
-Az adat osztályok sok nyelven sokmindent jelenthetnek, ezért nincs a Java-ból alapból adat osztályok létrehozására lehetőség.
+Az adat osztályok sok nyelven sok mindent jelenthetnek, ezért nincs a Java-ból alapból adat osztályok létrehozására lehetőség.
 Ezzel szemben a Kotlin készítői pragmatikusak voltak és kiválasztottak a sok lehetőség közül egyet, ami szerintük megfelelő.
 Alapvetően elmondható, hogy a nyelv megalkotói figyelembe vették az Effective Java c. könyvben leírtakat és ez sokszor visszaköszön
 a megoldásaikban.
@@ -13,7 +13,7 @@ Az adat osztályok Kotlin-ban nagyon hasonlóak ahhoz, amit a Lombok ad nekünk 
 - gettereket és settereket, valamint
 - destruktúrálhatók
 
-Fontos, hogy az adat osztályok Kotlinban nem megváltoztathatatlanok (tehát nem érték osztályok).
+Fontos, hogy az adat osztályok Kotlin-ban nem megváltoztathatatlanok (tehát nem érték osztályok).
 
 Lássuk hogy néz ki egy tipikus POJO Java-ban:
 

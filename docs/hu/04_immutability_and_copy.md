@@ -2,7 +2,7 @@
 
 ## Bevezető gondolatok
 
-> **Mit is jelent az immutable?** Röviden annyit nem tudod megváltoztatni az értékét, hanem a változásokkal egy új jön létre. Ezzel alapvetően számos olyan nehezen felderíthető hibának lehet elébe menni, amelyek az alkalmazás állaptának szabad manipulálásából következik. Többszálú környezetben ez kiváltképp nehezen átlátható.
+> **Mit is jelent az immutable?** Röviden annyit nem tudod megváltoztatni az értékét, hanem a változásokkal egy új jön létre. Ezzel alapvetően számos olyan nehezen felderíthető hibának lehet elébe menni, amelyek az alkalmazás állapotának szabad manipulálásából következik. Többszálú környezetben ez kiváltképp nehezen átlátható.
 
 Sok nyelv esetében az érték szerinti típusok és String jó példát jelentenek erre.
 
@@ -51,7 +51,7 @@ Nézzük most ugyanazt egy referencia típussal:
 
 Az előzőhöz hasonló hibaüzenetet fogunk látni.
 
-Ez pedig lemehet tetszőleg mélységig:
+Ez pedig lemehet tetszőleges mélységig:
 ```kotlin
   data class Address(val street: String, val city: String, val country: String)
   data class User(val name: String, val address: Address)

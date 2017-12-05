@@ -51,6 +51,8 @@ println(row)
 
 A kód kicsit tömörebb és olvashatóbb lett, kevesebbet is kellett gépelni.
 
+**TIPP**: Érdemes próbálkozni a Ctrl+Space kombinációval, rettentő sokat tud segíteni ez a fajta okos kiegészítés.
+
 ## Visszatérési érték desktruktúrálása
 
 Lényegében ugyanígy történik akkor is, ha funkció visszatérési értékét kell szétbontani:

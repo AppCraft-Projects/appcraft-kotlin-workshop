@@ -116,8 +116,6 @@ Azt szoktuk javasolni, hogy érdemes kisebb egységekben (funkció, legfeljebb o
 
 ## Időnként azért képes csúnya dolgokat csinálni
 
-- Ami nekem nem tetszik, hogy az interfacebe rak fieldeket (get valami, set valamiból fieldek)
-- Van hogy hiábra fut, kommenteket nem vesz át
-- A bitműveleteket nem kezeli mindig jól (nézni fogod, hogy mi az shl - mondjuk shift left) 
-- Array-ek konvertálása nem mindig az igazi, pl ByteArray / BitVector, ami spéci Kotlinos cucc 
-
+- Ami nekem nem tetszik, hogy az interfacebe rak fieldeket (get valami, set valamiból fieldek).
+- Van hogy hiábra fut, kommenteket nem vesz át.
+- A bitműveleteket nem kezeli mindig jól (nézni fogod, hogy mi az shl - mondjuk shift left).

@@ -229,7 +229,7 @@ fun Shop.getCustomersSortedByNumberOfOrders(): List<Customer> = customers.sorted
 
 Egy sor lesz ismét az egész. 
 
-## Kollekciók összegzése
+## Kollekciók összegzése
 
 Következő nagyon gyakori művelet, hogy egy kollekció elemeinek bizonyos értékeit, valamilyen szabályosság szerint összegezni kell.
 

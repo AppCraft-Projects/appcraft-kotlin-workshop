@@ -34,9 +34,9 @@ dependencies {
 }
 ```
 
-Most egyébként mi eleve Kotlinos projektet generáltunk, így ez jól is van így.
+Most egyébként mi eleve Kotlin-os projektet generáltunk, így ez jól is van így.
 
-Következő lépésként lássunk egy gyakorlati példát, alakítsunk át egy darabka Java kódot Koltinra. 
+Következő lépésként lássunk egy gyakorlati példát, alakítsunk át egy darabka Java kódot Koltin-ra. 
 
 Így néz ki eredetileg Java-ban:
 ```java
@@ -82,7 +82,7 @@ public class Size {
 }
 ```
 
-Majd ilyen lesz Koltinban:
+Majd ilyen lesz Koltin-ban:
 ```kotlin
 class Size(val columns: Int, val rows: Int) {
 
@@ -110,14 +110,12 @@ Már így is kijön egy jelentősebb különbség, de majd meglátjátok, össze
 
 ## Tapasztalatok
 
-Jó eszközről van szó, általánosságban jó szokott lenni az eredemény, de nem mindig fog az ízlésed szerint dolgozni. Épp ezért elő fog olyan fordulni, hogy bele kell nyúlnod kézzel. Ilyenkor persze nem árt némi Kotlin tudás. 
+Jó eszközről van szó, általánosságban jó szokott lenni az eredmény, de nem mindig fog az ízlésed szerint dolgozni. Épp ezért elő fog olyan fordulni, hogy bele kell nyúlnod kézzel. Ilyenkor persze nem árt némi Kotlin tudás. 
 
 Azt szoktuk javasolni, hogy érdemes kisebb egységekben (funkció, legfeljebb osztály) haladni, így sokkal könnyebb lesz később átlátni, hogy mi történt, és korrigálni, ha valami nem az igazi.
 
 ## Időnként azért képes csúnya dolgokat csinálni
 
-- Ami nekem nem tetszik, hogy az interfacebe rak fieldeket (get valami, set valamiból fieldek)
-- Van hogy hiábra fut, kommenteket nem vesz át
-- A bitműveleteket nem kezeli mindig jól (nézni fogod, hogy mi az shl - mondjuk shift left) 
-- Array-ek konvertálása nem mindig az igazi, pl ByteArray / BitVector, ami spéci Kotlinos cucc 
-
+- Ami nekem nem tetszik, hogy az interfacebe rak field-eket (get valami, set valamiból field-ek).
+- Van hogy hiábra fut, kommenteket nem vesz át.
+- A bitműveleteket nem kezeli mindig jól (nézni fogod, hogy mi az shl - mondjuk shift left).

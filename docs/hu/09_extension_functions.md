@@ -8,7 +8,7 @@ Például, ha egy olyan dekorátort szeretnénk készíteni, ami a `List` interf
 
 Persze ehhez kell az `AbstractList`hez hasonló megoldás, és jobb ha az osztály nem `final`.
 
-## Egy egyszerű példa
+## Egy egyszerű példa
 
 Így tudsz kiegészíteni egy `Int`-ekkel dolgozó `MutableList`-et:
 ```kotlin
@@ -49,7 +49,7 @@ fun String.extractCustomerName() : String {
 }
 ```
 
-Ez esetben szintén egy nagyon gyakran használt osztályt egészíthetsz ki egy az adott terület probléma domainjéhez köthető funkcióval. Hasonló esetben a projektben mindenki találkozni fog ezzel a kiegészítő funkcióval, és bizonyosan vakarni fogja a fejét, hogy ez mi a csuda, és mire jó.
+Ez esetben szintén egy nagyon gyakran használt osztályt egészíthetsz ki egy az adott terület probléma domain-jéhez köthető funkcióval. Hasonló esetben a projektben mindenki találkozni fog ezzel a kiegészítő funkcióval, és bizonyosan vakarni fogja a fejét, hogy ez mi a csuda, és mire jó.
 
 Tudom, nem túl frappáns a példa, de szemlélteti a lényeget.
 

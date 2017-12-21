@@ -21,7 +21,7 @@ kódok nem lesznek láthatók java oldalról.
 
 ### Builderek
 
-Ha buildereket használunk, akkor tudni kell, hogy a klasszikus Kotlin builderek használatával:
+Ha builder-eket használunk, akkor tudni kell, hogy a klasszikus Kotlin builderek használatával:
 
 ```kotlin
 class Person private constructor(val name: String, val surname: String) {
@@ -51,7 +51,7 @@ class Person private constructor(val name: String, val surname: String) {
 }
 ```
 
-kódunk Kotlinból használva szép lesz:
+kódunk Kotlin-ból használva szép lesz:
 
 ```kotlin
 Person.create {
@@ -91,7 +91,7 @@ data class PersonWithClassicBuilder(val name: String, val surname: String) {
 }
 ```
 
-és a felhasználása mind Kotlinból mind Java oldalról ugyanúgy néz ki:
+és a felhasználása mind Kotlin-ból mind Java oldalról ugyanúgy néz ki:
 
 ```java
 PersonWithClassicBuilder.Builder.create()

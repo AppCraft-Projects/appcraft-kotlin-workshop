@@ -2,7 +2,7 @@
 
 ## Bevezető
 
-Kotlinban is megtalálható az összes jól megszokott kollekció:
+Kotlin-ban is megtalálható az összes jól megszokott kollekció:
 - Lists
 - Arrays (beleértve az ekvivalens "primitív típusokat is")
 - Maps
@@ -33,11 +33,11 @@ Másik jó **Cmd / Ctrl + klikkes** cuccot az `ArrayList`-nél látod:
 @SinceKotlin("1.1") public typealias ArrayList<E> = java.util.ArrayList<E>
 ```
 
-Figyeljétek a sor végét, itt egy újabb fontos megállapítás. A Kotlin jellemzően nem definiál saját kollekciókat, a Java alap osztályait egészíti ki új képességekkel. Legyenek azek a fent látott interfacek (mutable / immutable), vagy kiegészítő funckiók.
+Figyeljétek a sor végét, itt egy újabb fontos megállapítás. A Kotlin jellemzően nem definiál saját kollekciókat, a Java alap osztályait egészíti ki új képességekkel. Legyenek ezek a fent látott interface-k (mutable / immutable), vagy kiegészítő funkciók.
 
 ## Kollekciók létrehozása (listOf, mapOf)
 
-Egy listát egyébként a `listOf()` funckióval szokás létrehozni.
+Egy listát egyébként a `listOf()` funkcióval szokás létrehozni.
 ```kotlin
 // Számok
 val numbers = 1..100 
@@ -46,7 +46,7 @@ val numbers = 1..100
 val cities = listOf("London", "Párizs", "Róma")
 ```
 
-Érdemes egyébként a `listOf()` funckió kódjában is elmerülni (*Cmd / Ctrl + klikk*):
+Érdemes egyébként a `listOf()` funkció kódjában is elmerülni (*Cmd / Ctrl + klikk*):
 ```kotlin
 /** Returns a new read-only list of given elements.  The returned list is serializable (JVM). */
 public fun <T> listOf(vararg elements: T): List<T> = if (elements.size > 0) elements.asList() else emptyList()
@@ -113,7 +113,7 @@ Innentől pedig a feladat nem nehéz, innen indulunk ki:
 fun Shop.getSetOfCustomers(): Set<Customer> = TODO()
 ```
 
-A `Customer` osztály és a `customers` egyébként a `Shop.kt` fileban találhatóak.
+A `Customer` osztály és a `customers` egyébként a `Shop.kt` fájlban találhatóak.
 
 A megoldás pedig:
 ```kotlin
@@ -124,11 +124,11 @@ A funkció visszatérési értéke alapján következtettem ki, hogy a másik ol
 
 ## Néhány hasznos funkció
 
-Még néhány gyakraasznált funkciót érdemes megismerni:
-- `.any()`: *True* értéket ad vissza, ha a kollekciónak legalább egy eleme egyezik a prédikátummal.
-- `.all()`: *True* értéket ad vissza, ha a kollekció minden eleme megegyezik a prédikátummal.
+Még néhány gyakran használt funkciót érdemes megismerni:
+- `.any()`: *True* értéket ad vissza, ha a kollekciónak legalább egy eleme egyezik a predikátum.
+- `.all()`: *True* értéket ad vissza, ha a kollekció minden eleme megegyezik a predikátum.
 - `.count()`: A kollekció elemeinek a számát.
-- `.find()`: Az első a prédikátummal egyező elemet adja vissza, vagy null-t, ha nem talál semmit.
+- `.find()`: Az első a predikátum egyező elemet adja vissza, vagy null-t, ha nem talál semmit.
 
 ```kotlin
 val numbers = listOf(-1, 0, 2)
@@ -169,9 +169,9 @@ fun Shop.findAnyCustomerFrom(city: City): Customer? = customers.find { it.city =
 
 Szintén mindennapi feladat, hogy kiválasszuk egy kollekció legnagyobb vagy épp legkisebb elemét. Ebben segít a következő négy funkció:
 - `.min()`: Vissza adja a legkisebb elemet, vagy `null`-t, ha a kollekció üres.
-- `.minBy()`: Adott selectornak megfelelően vissza adja a legkisebb elemet, vagy `null`-t, ha a kollekció üres.
+- `.minBy()`: Adott selector-nak megfelelően vissza adja a legkisebb elemet, vagy `null`-t, ha a kollekció üres.
 - `.max()`: Vissza adja a legnagyobb elemet, vagy `null`-t, ha a kollekció üres.
-- `.maxBy()`: Adott selectornak megfelelően vissza adja a legnagyobb elemet, vagy `null`-t, ha a kollekció üres.
+- `.maxBy()`: Adott selector-nak megfelelően vissza adja a legnagyobb elemet, vagy `null`-t, ha a kollekció üres.
 
 A gyakorlatban egyszerűen használhatóak, mutatok is rá két példát.
 ```kotlin
@@ -179,7 +179,7 @@ listOf(1, 42, 4).max() == 42
 listOf("a", "ab").minBy { it.length } == "a"
 ```
 
-Az első sor teljesen egyértelmű, kiválasztja a legnagyobbat a számok között, nem is magyarázom ezt túl. A második esetében az történik viszont, hogy a stringek közül a legrövidebbet választjuk, ami pedig az *"a"*.
+Az első sor teljesen egyértelmű, kiválasztja a legnagyobbat a számok között, nem is magyarázom ezt túl. A második esetében az történik viszont, hogy a string-ek közül a legrövidebbet választjuk, ami pedig az *"a"*.
 
 Szerintem a .minBy() és a .maxBy() funkciók tényleges megértéséhez nem árt még egy példa. 
 ```kotlin
@@ -213,7 +213,7 @@ listOf("bbb", "a", "cc").sorted() == listOf("a", "bbb", "cc")
 listOf("bbb", "a", "cc").sortedBy { it.length } == listOf("a", "cc", "bbb")
 ```
 
-Az első esetben a stringek tartalma szerint rendez, a második esetében viszont az elemek hossza alapján.
+Az első esetben a string-ek tartalma szerint rendez, a második esetében viszont az elemek hossza alapján.
 
 Ezek alapján lássunk is neki a soron következő feladatnak:
 ```kotlin
@@ -229,9 +229,9 @@ fun Shop.getCustomersSortedByNumberOfOrders(): List<Customer> = customers.sorted
 
 Egy sor lesz ismét az egész. 
 
-## Kollekciók összegzése
+## Kollekciók összegzése
 
-Kövektező nagyon gyakori művelet, hogy egy kollekció elemeinek bizonyos értékeit, valamilyen szabályosság szerint összegezni kell.
+Következő nagyon gyakori művelet, hogy egy kollekció elemeinek bizonyos értékeit, valamilyen szabályosság szerint összegezni kell.
 
 ```kotlin
 listOf(1, 5, 3).sum() == 9

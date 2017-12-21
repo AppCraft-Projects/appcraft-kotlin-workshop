@@ -1,6 +1,6 @@
 # Függvények
 
-A Java-val ellentétben Kotlinban egy függvény nem kell, hogy egy osztály része legyen, akár egy külön file-ban is
+A Java-val ellentétben Kotlin-ban egy függvény nem kell, hogy egy osztály része legyen, akár egy külön fájlban is
 definiálhatjuk őket:
 
 ```kotlin
@@ -36,12 +36,12 @@ public inline fun <R> run(block: () -> R): R = block()
 
 ```
 
-Ezek mind olyan függvények, amik más függvényeket várnak paraméterként, amiket kód blokk-ként kezelnek és futtanak.
+Ezek mind olyan függvények, amik más függvényeket várnak paraméterként, amiket kód blokk-ként kezelnek és futtatnak.
 A `let` akkor lehet hasznos, ha egy saját scope-ot akarunk kialakítani. `also`-t érdemes használni például builder-ek
 írásakor, hogy a `this`-t vissza tudjuk adni anélkül, hogy sok kódot kelljen írnunk. A `run` futtatja a kód blokkot
 és visszatér az utolsó kifejezés értékével.
 
-Amennyiben függvényunk utolsó paramétere egy függvény, használhatjuk az egyszerűsített szintaxist, például a fenti `lock`
+Amennyiben függvényünk utolsó paramétere egy függvény, használhatjuk az egyszerűsített szintaxist, például a fenti `lock`
 funkció meghívása így nézhet ki:
 
 ```kotlin

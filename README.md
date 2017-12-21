@@ -1,5 +1,7 @@
 # AppCraft Kotlin Workshop
 
+You can join the awesome budapest.mobile community here: [http://bit.ly/budapest-mobile](http://bit.ly/budapest-mobile) 
+
 You can find this repo here: [http://bit.ly/hwsw-kotlin-workshop](http://bit.ly/hwsw-kotlin-workshop)
 
 Most of our examples based on the Kotlin port Zircon library, that can be found here: [http://bit.ly/adam-zircon](http://bit.ly/adam-zircon)

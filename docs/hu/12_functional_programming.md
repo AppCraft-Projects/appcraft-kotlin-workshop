@@ -17,7 +17,7 @@ public class JavaUser {
 }
 ```
 
-Ennek a megfelelője a Kotlinba nagyon hasonló, de némileg mégis más:
+Ennek a megfelelője a Kotlin-ban nagyon hasonló, de némileg mégis más:
 
 ```kotlin
 fun fetchCitiesOfUsers(users: List<KotlinUser>) = users
@@ -75,7 +75,7 @@ a `fold` használatával megadhatunk alapértelmezett értéket, ha nincs a list
 fun sumNumbers(numbers: List<Int>): Int = numbers.fold(0, Int::plus)
 ```
 
-A fentieket komibnálhatjuk is, így például ha szeretnénk összerakni egy listát azokkal a pozíciókkal, amik egy valamilyen méretű
+A fentieket kombinálhatjuk is, így például ha szeretnénk összerakni egy listát azokkal a pozíciókkal, amik egy valamilyen méretű
 négyszögbe beleférnek, akkor azt így megtehetjük:
 
 ```kotlin

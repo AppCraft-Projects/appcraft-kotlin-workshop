@@ -4,16 +4,16 @@ Az Android SDK a Java-val időnként meglehetősen körülményes és terjengős
 
 Számos területen segíthet, öt nagy területen:
 - Commons
-  - Intentek
-  - Dialógusablakok és toastok
+  - Intent-ek
+  - Dialógusablakok és toast-ok
   - Loggolás
   - Resource-ok kezelése
 - Layout  
-  - Layoutok készítése kódból
+  - Layout-ok készítése kódból
 - SQLite
   - SQLite kezelés 
 - Corutins
-  - Corutinok kezelése
+  - Corutine-ok kezelése
 - Support libraries
   - Kiegészítések tucatnyi support library osztályhoz
 
@@ -42,7 +42,7 @@ dependencies {
 }
 ```
 
-Valamint a support libraryhoz tartozó:
+Valamint a support library-hoz tartozó:
 ```groovy
 dependencies {
   // Appcompat-v7 (only Anko Commons)
@@ -81,7 +81,7 @@ dependencies {
 
 Nézzünk néhányra példákat, szigorúan a teljesség igénye nélkül.
 
-### Intentek
+### Intent-ek
 
 Korábban a Java-ban ez így nézett ki:
 
@@ -97,16 +97,16 @@ Ez az, amire az elején utaltam, érzésre nem kell ennek négy sor, mellesleg b
 startActivity(intentFor<SomeOtherActivity>("id" to 5).singleTop())
 ```
 
-Sőőt, van még rövidebb is, ha nem szeretnél flaget átadni:
+Sőt, van még rövidebb is, ha nem szeretnél flag-et átadni:
 ```kotlin
 startActivity<SomeOtherActivity>("id" to 5)
 ```
 
 Ez persze csak a navigáció, de támogatott a többi intent típus is.
 
-### Dialógusablakok és toastok
+### Dialógusablakok és toast-ok
 
-#### Toast
+#### Toast
 Korábban Java-ban így ment ez:
 ```java
 Context context = getApplicationContext();

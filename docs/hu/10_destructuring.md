@@ -51,6 +51,8 @@ println(row)
 
 A kód kicsit tömörebb és olvashatóbb lett, kevesebbet is kellett gépelni.
 
+**TIPP**: Érdemes próbálkozni a Ctrl+Space kombinációval, rettentő sokat tud segíteni ez a fajta okos kiegészítés.
+
 ## Visszatérési érték desktruktúrálása
 
 Lényegében ugyanígy történik akkor is, ha funkció visszatérési értékét kell szétbontani:
@@ -91,12 +93,12 @@ println(row)
 
 **TIPP**: Ha sok elemes az objektum, de neked csak az első 1-2 elem kell, akkor csinálhatod azt, hogy csak az elsőt destrukturálod, a többihez pedig nem teszel ki alsó vonást.
 
-## Érdemes óvatosnak lenni
+## Érdemes óvatosnak lenni
 
-Azonban tartogat ez a módszer bizonyos veszélyeket, amelyekre érdemes előre felkészülni. Tegyük fel kiegészítjük a data class objektumunkat egy *deepth* propertyvel, ami szintén String típusú, de a destructuringon nem változtatunk. Mi fog történni?
+Azonban tartogat ez a módszer bizonyos veszélyeket, amelyekre érdemes előre felkészülni. Tegyük fel kiegészítjük a data class objektumunkat egy *depth* propertyv-el, ami szintén String típusú, de a destructuring-on nem változtatunk. Mi fog történni?
 
 ```kotlin
-data class Position(val deepth: Int,
+data class Position(val depth: Int,
                     val column: Int,
                     val row: Int)
 
